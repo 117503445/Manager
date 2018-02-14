@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -19,17 +20,23 @@ namespace Manager
     /// </summary>
     public partial class WdBackGround : Window
     {
-        public UsbCopyer copyer = new UsbCopyer("D:/temp/",true);
+        
+
+        //public UsbCopyer copyer = new UsbCopyer("D:/temp/",false);
         public WdBackGround()
         {
             InitializeComponent();
             //Visibility = Visibility.Hidden;
-
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

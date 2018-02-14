@@ -15,7 +15,7 @@ namespace Manager
     {
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            WdBackGround.copyer.Dispose();      
+            //WdBackGround.copyer.Dispose();      
         }
 
         public static WdBackGround WdBackGround = new WdBackGround();

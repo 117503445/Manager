@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -20,18 +21,23 @@ namespace Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-   
+        //private HotKey _hotkey;
         public MainWindow()
         {
             InitializeComponent();
-            Application.WdBackGround.Show();
-            Visibility = Visibility.Hidden;
+            //Application.WdBackGround.Show();
+            //Visibility = Visibility.Hidden;
 
+            KeyboardHook hook = new KeyboardHook();
+           hook.SetHook();
+
+            //_hotkey = new HotKey(ModifierKeys.Windows | ModifierKeys.Alt, Keys.Left, this);
+            //_hotkey.HotKeyPressed += (k) => Console.WriteLine("Hello"); 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //App.WdCopyUSB.Show();
+            //
         }
     }
 }
