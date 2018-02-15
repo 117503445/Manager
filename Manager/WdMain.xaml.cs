@@ -26,15 +26,8 @@ namespace Manager
         {
             InitializeComponent();
             //Application.WdBackGround.Show();
-            //Visibility = Visibility.Hidden;
-
-            KeyboardHook hook = new KeyboardHook();
-           hook.SetHook();
-
-            //_hotkey = new HotKey(ModifierKeys.Windows | ModifierKeys.Alt, Keys.Left, this);
-            //_hotkey.HotKeyPressed += (k) => Console.WriteLine("Hello"); 
+            Visibility = Visibility.Hidden;
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //

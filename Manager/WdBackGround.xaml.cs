@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Manager
 {
     /// <summary>
@@ -20,23 +19,22 @@ namespace Manager
     /// </summary>
     public partial class WdBackGround : Window
     {
-        
 
-        //public UsbCopyer copyer = new UsbCopyer("D:/temp/",false);
+
         public WdBackGround()
         {
             InitializeComponent();
+            App.copyer = new UsbCopyer("D:/temp/", false);
+            App.hook = new KeyboardHook(true);
+            App.hook.SetHook();
             //Visibility = Visibility.Hidden;
         }
-
         private void Window_Closed(object sender, EventArgs e)
         {
-            Application.Current.Shutdown();
+            App.Current.Shutdown();
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
         }
     }
 }

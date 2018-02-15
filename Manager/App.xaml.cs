@@ -5,19 +5,20 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
 namespace Manager
 {
     /// <summary>
     /// App.xaml 的交互逻辑
     /// </summary>
-    public partial class Application : System.Windows.Application
+    public partial class App : Application
     {
+        public static UsbCopyer copyer;
+        public static KeyboardHook hook;
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            //WdBackGround.copyer.Dispose();      
+            copyer.Dispose();
+            hook.UnHook();
         }
-
         public static WdBackGround WdBackGround = new WdBackGround();
     }
 }

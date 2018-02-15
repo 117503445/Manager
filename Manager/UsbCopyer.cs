@@ -11,7 +11,6 @@ using System.Windows.Interop;
 using System.Windows;
 using System.Windows.Threading;
 using static Manager.UsbWatcher;
-
 namespace Manager
 {
     public class UsbCopyer
@@ -71,7 +70,6 @@ namespace Manager
         }
         private void NotifyIcon_click()
         {
-
             hackDrive = DriveInfo.GetDrives().Last().Name;
             CopyUSB(hackDrive, dirBackup);
         }
@@ -96,7 +94,6 @@ namespace Manager
                }
                Console.WriteLine("Copy:{0} finished", timestamp);
            });
-
         }
     }
     public class UsbWatcher
