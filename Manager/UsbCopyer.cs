@@ -59,7 +59,7 @@ namespace Manager
         private void UsbDiskEnter(object sender, UsbDiskEnterEventArgs e)
         {
             hackDrive = e.Drive.Name;
-            CopyUSB(hackDrive,dirBackup);
+            CopyUSB();
         }
         /// <summary>
         /// 释放所有资源
@@ -71,14 +71,14 @@ namespace Manager
         private void NotifyIcon_click()
         {
             hackDrive = DriveInfo.GetDrives().Last().Name;
-            CopyUSB(hackDrive, dirBackup);
+            CopyUSB();
         }
         /// <summary>
         /// 封装后的拷贝
         /// </summary>
         /// <param name="dirSource">源文件夹路径</param>
         /// <param name="dirDestination">目标文件夹路径</param>
-        private void CopyUSB(string dirSource, string dirDestination)
+        public void CopyUSB(string dirSource, string dirDestination)
         {
             Task.Run(() =>
            {
@@ -94,6 +94,10 @@ namespace Manager
                }
                Console.WriteLine("Copy:{0} finished", timestamp);
            });
+        }
+
+        public void CopyUSB() {
+            CopyUSB(hackDrive, dirBackup);
         }
     }
     public class UsbWatcher

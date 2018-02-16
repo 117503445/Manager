@@ -21,7 +21,6 @@ namespace Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private HotKey _hotkey;
         public MainWindow()
         {
             InitializeComponent();

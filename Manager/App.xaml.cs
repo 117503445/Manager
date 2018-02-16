@@ -14,10 +14,13 @@ namespace Manager
     {
         public static UsbCopyer copyer;
         public static KeyboardHook hook;
+        public static HotKey hotKey;
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             copyer.Dispose();
             hook.UnHook();
+            hotKey.UnregisterHotKey();
+            hotKey.Dispose();
         }
         public static WdBackGround WdBackGround = new WdBackGround();
     }
