@@ -24,9 +24,9 @@ namespace Manager
             Icon = System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath),
         };
         /// <summary>
-        /// 例:  "G:/"
+        /// 例:  "G:/",初始化为
         /// </summary>
-        private string hackDrive = "";
+        private string hackDrive = DriveInfo.GetDrives().Last().DriveType == DriveType.Removable ? DriveInfo.GetDrives().Last().Name : "";
         /// <summary>
         /// 不点击托盘,直接进行copy
         /// </summary>
@@ -96,7 +96,8 @@ namespace Manager
            });
         }
 
-        public void CopyUSB() {
+        public void CopyUSB()
+        {
             CopyUSB(hackDrive, dirBackup);
         }
     }
