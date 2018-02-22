@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 namespace Manager
 {
-     class Win32Api
+    class Win32Api
     {
         public const int WM_KEYDOWN = 0x100;
         public const int WM_KEYUP = 0x101;

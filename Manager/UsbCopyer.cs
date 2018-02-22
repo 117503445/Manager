@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClassLibrary_117503445;
+using TLib;
 using System.Windows.Forms;
 using System.IO;
 using s = Manager.Properties.Settings;
@@ -115,7 +115,7 @@ namespace Manager
             timer.Tick += Timer_Tick;
             timer.Start();
         }
-        public EventHandler<UsbDiskEnterEventArgs> UsbDiskEnter;
+        public event EventHandler<UsbDiskEnterEventArgs> UsbDiskEnter;
         private void Timer_Tick(object sender, EventArgs e)
         {
             var s = DriveInfo.GetDrives();
