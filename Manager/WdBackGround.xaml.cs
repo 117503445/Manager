@@ -24,12 +24,16 @@ namespace Manager
         public WdBackGround()
         {
             InitializeComponent();
-            App.copyer = new UsbCopyer("D:/temp/", false);
-            App.hook = new KeyboardHook(true);
-            App.hook.SetHook();
+
+            //App.copyer = new UsbCopyer("D:/temp/", false);
+            //App.hook = new KeyboardHook(true);
+            //App.hook.SetHook();
+
             //Visibility = Visibility.Hidden;
-            App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
-            App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
+
+            //App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
+            //App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
+            ProcessWatcher processWatcher = new ProcessWatcher();
         }
 
         private void HotKey_HotKeyPressed(HotKey obj)

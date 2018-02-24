@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="HotKey.cs" />
     <Compile Include="KeyboardHook.cs" />
+    <Compile Include="ProcessWatcher.cs" />
     <Compile Include="UsbCopyer.cs" />
     <Compile Include="WdBackGround.xaml.cs">
       <DependentUpon>WdBackGround.xaml</DependentUpon>
