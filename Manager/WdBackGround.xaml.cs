@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TLib;
 namespace Manager
 {
     /// <summary>
@@ -34,6 +35,12 @@ namespace Manager
             //App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
             //App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
             ProcessWatcher processWatcher = new ProcessWatcher();
+            processWatcher.AppLaunch += ProcessWatcher_AppLaunch;
+        }
+
+        private void ProcessWatcher_AppLaunch(object sender, EventArgs e)
+        {
+            Logger.Write(DateTime.Now.ToString());
         }
 
         private void HotKey_HotKeyPressed(HotKey obj)
