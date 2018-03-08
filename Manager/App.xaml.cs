@@ -22,6 +22,6 @@ namespace Manager
             hotKey.UnregisterHotKey();
             hotKey.Dispose();
         }
-        public static WdBackGround WdBackGround = new WdBackGround();
+        public static WdBackGround WdBackGround;
     }
 }

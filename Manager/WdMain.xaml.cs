@@ -30,6 +30,7 @@ namespace Manager
             Visibility = Visibility.Hidden;
             DispatcherTimer tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             tmrWatcher.Tick += TmrWatcher_Tick;
+            App.WdBackGround = new WdBackGround();
         }
 
         private void TmrWatcher_Tick(object sender, EventArgs e)

@@ -26,16 +26,16 @@ namespace Manager
         {
             InitializeComponent();
 
-            //App.copyer = new UsbCopyer("D:/temp/", false);
-            //App.hook = new KeyboardHook(true);
-            //App.hook.SetHook();
+            App.copyer = new UsbCopyer("D:/temp/", false);
+            App.hook = new KeyboardHook(true);
+            App.hook.SetHook();
 
-            //Visibility = Visibility.Hidden;
+            Visibility = Visibility.Hidden;
 
-            //App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
-            //App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
-            ProcessWatcher processWatcher = new ProcessWatcher();
-            processWatcher.AppLaunch += ProcessWatcher_AppLaunch;
+            App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
+            App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
+            //ProcessWatcher processWatcher = new ProcessWatcher();
+            //processWatcher.AppLaunch += ProcessWatcher_AppLaunch;
         }
 
         private void ProcessWatcher_AppLaunch(object sender, EventArgs e)
