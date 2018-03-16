@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using User.SoftWare;
 namespace Manager
 {
     /// <summary>
@@ -23,5 +24,7 @@ namespace Manager
             hotKey.Dispose();
         }
         public static WdBackGround WdBackGround;
+
+       
     }
 }

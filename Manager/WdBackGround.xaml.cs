@@ -26,14 +26,22 @@ namespace Manager
         {
             InitializeComponent();
 
-            App.copyer = new UsbCopyer("D:/temp/", false);
+#if !DEBUG
+            App.copyer = new UsbCopyer(Setting.UsbBackupPath, false, false);
             App.hook = new KeyboardHook(true);
             App.hook.SetHook();
 
-            Visibility = Visibility.Hidden;
+            //Visibility = Visibility.Hidden;
 
             App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
             App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
+
+#endif
+            //SyncDirBinding binding = new SyncDirBinding(@"D:\temp\source", @"D:\temp\dest", @"D:\temp\backup");
+
+
+
+
             //ProcessWatcher processWatcher = new ProcessWatcher();
             //processWatcher.AppLaunch += ProcessWatcher_AppLaunch;
         }

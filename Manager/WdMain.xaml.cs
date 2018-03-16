@@ -27,10 +27,12 @@ namespace Manager
         {
             InitializeComponent();
             //Application.WdBackGround.Show();
-            Visibility = Visibility.Hidden;
+            //Visibility = Visibility.Hidden;
             DispatcherTimer tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             tmrWatcher.Tick += TmrWatcher_Tick;
             App.WdBackGround = new WdBackGround();
+            LoadSetting(null, null);
+            TbUsbBackupPath.Text = Setting.UsbBackupPath;
         }
 
         private void TmrWatcher_Tick(object sender, EventArgs e)
@@ -42,10 +44,6 @@ namespace Manager
             {
                 Visibility = Visibility.Visible;
             }
-            else
-            {
-                Visibility = Visibility.Hidden;
-            }
             if (File.Exists(pathStop))
             {
                 File.AppendAllText(pathStop, DateTime.Now.ToString());
@@ -53,9 +51,26 @@ namespace Manager
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoadSetting(object sender, EventArgs e)
         {
-            //
+            App.WdBackGround.Visibility = Setting.WdBackgroundVisibility ? Visibility.Visible : Visibility.Hidden;
+            this.Visibility = Setting.WdMainVisibility ? Visibility.Visible : Visibility.Hidden;
+        }
+
+        private void TbUsbBackupPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (IsLoaded)
+            {
+                if (Directory.Exists(TbUsbBackupPath.Text))
+                {
+                    TbUsbBackupPath.Background = Brushes.White;
+                    Setting.UsbBackupPath = TbUsbBackupPath.Text;
+                }
+                else
+                {
+                    TbUsbBackupPath.Background = Brushes.Red;
+                }
+            }
         }
     }
 }

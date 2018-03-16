@@ -36,25 +36,43 @@ namespace Manager
             get => isDirectCopy; set
             {
                 isDirectCopy = value;
-                notifyIcon.Visible = !isDirectCopy;
+
             }
         }
+
+
+
+        private bool isUseNotifyIcon = false;
+        public bool IsUseNotifyIcon { get => isUseNotifyIcon; set { isUseNotifyIcon = value; notifyIcon.Visible = isUseNotifyIcon; } }
         private string dirBackup = "";
         /// <summary>
         /// 
         /// </summary>
         /// <param name="dirBackup">备份路径,Exp:"D:/temp/"</param>
-        /// <param name="isDirectCopy">直接拷贝模式:插入即拷.否则使用托盘</param>
-        public UsbCopyer(string dirBackup, bool isDirectCopy)
+        /// <param name="isDirectCopy">直接拷贝模式</param>
+        /// <param name="isUseNotifyIcon">使用托盘</param>
+        public UsbCopyer(string dirBackup, bool isDirectCopy, bool isUseNotifyIcon)
         {
             this.dirBackup = dirBackup;
             IsDirectCopy = isDirectCopy;
-            notifyIcon.MouseClick += new MouseEventHandler((o, e) =>
+            if (isUseNotifyIcon)
             {
-                NotifyIcon_click();
-            });
-            UsbWatcher watcher = new UsbWatcher();
-            watcher.UsbDiskEnter += UsbDiskEnter;
+                notifyIcon.MouseClick += new MouseEventHandler((o, e) =>
+                {
+                    NotifyIcon_click();
+                });
+            }
+            else
+            {
+                notifyIcon.Dispose();
+                notifyIcon = null;
+            }
+            if (IsDirectCopy)
+            {
+                UsbWatcher watcher = new UsbWatcher();
+                watcher.UsbDiskEnter += UsbDiskEnter;
+            }
+
         }
         private void UsbDiskEnter(object sender, UsbDiskEnterEventArgs e)
         {
@@ -87,6 +105,7 @@ namespace Manager
                {
                    Console.WriteLine("Coying:HackDrive={0},Path={1}", dirSource, dirDestination + timestamp);
                    Filer.CopyFolder(dirSource, dirDestination + timestamp);
+                   //SyncDir.Sync(dirSource,dirDestination);
                }
                catch (Exception ex)
                {

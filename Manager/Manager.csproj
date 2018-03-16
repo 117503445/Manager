@@ -47,8 +47,12 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="TLib">
+    <Reference Include="TLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\TLib\TLib\bin\Release\TLib.dll</HintPath>
+    </Reference>
+    <Reference Include="UserLibrary">
+      <HintPath>..\..\..\Project_ht c\UserLibrary\UserLibrary\bin\Release\UserLibrary.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -74,6 +78,8 @@
     <Compile Include="HotKey.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="ProcessWatcher.cs" />
+    <Compile Include="Setting.cs" />
+    <Compile Include="SyncDirBinding.cs" />
     <Compile Include="UsbCopyer.cs" />
     <Compile Include="WdBackGround.xaml.cs">
       <DependentUpon>WdBackGround.xaml</DependentUpon>
