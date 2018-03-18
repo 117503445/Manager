@@ -118,5 +118,9 @@
   <ItemGroup>
     <Resource Include="help.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="DLL\UserLibrary.dll" />
+    <Content Include="DLL\UserLibrary.pdb" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
