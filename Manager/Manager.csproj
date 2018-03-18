@@ -52,7 +52,7 @@
       <HintPath>..\..\TLib\TLib\bin\Release\TLib.dll</HintPath>
     </Reference>
     <Reference Include="UserLibrary">
-      <HintPath>..\..\..\Project_ht c\UserLibrary\UserLibrary\bin\Release\UserLibrary.dll</HintPath>
+      <HintPath>DLL\UserLibrary.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
