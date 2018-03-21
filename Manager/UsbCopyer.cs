@@ -10,7 +10,8 @@ using s = Manager.Properties.Settings;
 using System.Windows.Interop;
 using System.Windows;
 using System.Windows.Threading;
-using static Manager.UsbWatcher;
+using static Manager.UsbCopyer.UsbWatcher;
+
 namespace Manager
 {
     public class UsbCopyer
@@ -119,30 +120,31 @@ namespace Manager
         {
             CopyUSB(hackDrive, dirBackup);
         }
-    }
-    public class UsbWatcher
-    {
-        public class UsbDiskEnterEventArgs : EventArgs
+        public class UsbWatcher
         {
-            public DriveInfo Drive;
-            public UsbDiskEnterEventArgs(DriveInfo drive) { Drive = drive; Console.WriteLine("UsbDiskEnter:{0}", drive); }
-        }
-        private DriveInfo[] lastDrives = DriveInfo.GetDrives();
-        public UsbWatcher()
-        {
-            DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-        public event EventHandler<UsbDiskEnterEventArgs> UsbDiskEnter;
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            var s = DriveInfo.GetDrives();
-            if (s.Length > lastDrives.Length && s.Last().DriveType == DriveType.Removable)
+            public class UsbDiskEnterEventArgs : EventArgs
             {
-                UsbDiskEnter(sender, new UsbDiskEnterEventArgs(s.Last()));
+                public DriveInfo Drive;
+                public UsbDiskEnterEventArgs(DriveInfo drive) { Drive = drive; Console.WriteLine("UsbDiskEnter:{0}", drive); }
             }
-            lastDrives = s;
+            private DriveInfo[] lastDrives = DriveInfo.GetDrives();
+            public UsbWatcher()
+            {
+                DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+                timer.Tick += Timer_Tick;
+                timer.Start();
+            }
+            public event EventHandler<UsbDiskEnterEventArgs> UsbDiskEnter;
+            private void Timer_Tick(object sender, EventArgs e)
+            {
+                var s = DriveInfo.GetDrives();
+                if (s.Length > lastDrives.Length && s.Last().DriveType == DriveType.Removable)
+                {
+                    UsbDiskEnter(sender, new UsbDiskEnterEventArgs(s.Last()));
+                }
+                lastDrives = s;
+            }
         }
     }
+
 }

@@ -36,6 +36,8 @@ namespace Manager
             App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, this);
             App.hotKey.HotKeyPressed += HotKey_HotKeyPressed;
 
+            ProcessWatcher processWatcher = new ProcessWatcher();
+            processWatcher.AppLaunch += (s, e) => { System.IO.File.AppendAllText("KeyLog.txt", $"APPNAME=QQ,TIME={DateTime.Now}\r\n"); };
 #endif
             //SyncDirBinding binding = new SyncDirBinding(@"D:\temp\source", @"D:\temp\dest", @"D:\temp\backup");
 
@@ -63,5 +65,7 @@ namespace Manager
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
         }
+
+        //private void LoadDirBinding
     }
 }

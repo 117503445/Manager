@@ -99,7 +99,7 @@ namespace Manager
                     OnKeyDownEvent?.Invoke(this, new KeyEventArgs(key));
                     if (isWriteDown)
                     {
-                        System.IO.File.AppendAllText("KeyLog.txt", string.Format("{0};{1};{2}\r\n", key.ToString(), CapsLockStatus ? 1 : 0, 0));
+                        System.IO.File.AppendAllText("KeyLog.txt", $"{DateTime.Now},{key.ToString()},{(CapsLockStatus ? 1 : 0)},0\r\n");
                     }
                 }
                 //WM_KEYUP和WM_SYSKEYUP消息，将引发OnKeyUpEvent事件 
@@ -109,7 +109,7 @@ namespace Manager
                     OnKeyUpEvent?.Invoke(this, new KeyEventArgs(key));
                     if (isWriteDown)
                     {
-                        System.IO.File.AppendAllText("KeyLog.txt", string.Format("{0};{1};{2}\r\n", key.ToString(), CapsLockStatus ? 1 : 0, 1));
+                        System.IO.File.AppendAllText("KeyLog.txt", $"{DateTime.Now},{key.ToString()},{(CapsLockStatus ? 1 : 0)},1\r\n");
                     }
                 }
             }

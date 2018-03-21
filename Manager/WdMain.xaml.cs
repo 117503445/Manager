@@ -34,12 +34,12 @@ namespace Manager
             LoadSetting(null, null);
             TbUsbBackupPath.Text = Setting.UsbBackupPath;
         }
-
+        
         private void TmrWatcher_Tick(object sender, EventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string pathShow = path + "/show";
-            string pathStop = path + "/stop";
+            string pathShow = path + "/show.txt";
+            string pathStop = path + "/stop.txt";
             if (File.Exists(pathShow))
             {
                 Visibility = Visibility.Visible;
@@ -50,12 +50,18 @@ namespace Manager
                 App.Current.Shutdown();
             }
         }
-
+        /// <summary>
+        /// 读取软件设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadSetting(object sender, EventArgs e)
         {
             App.WdBackGround.Visibility = Setting.WdBackgroundVisibility ? Visibility.Visible : Visibility.Hidden;
             this.Visibility = Setting.WdMainVisibility ? Visibility.Visible : Visibility.Hidden;
         }
+        
+       
 
         private void TbUsbBackupPath_TextChanged(object sender, TextChangedEventArgs e)
         {
