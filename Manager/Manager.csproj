@@ -80,6 +80,7 @@
     <Compile Include="ProcessWatcher.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="SyncDirBinding.cs" />
+    <Compile Include="SyncDirPair.cs" />
     <Compile Include="UsbCopyer.cs" />
     <Compile Include="WdBackGround.xaml.cs">
       <DependentUpon>WdBackGround.xaml</DependentUpon>
@@ -119,6 +120,9 @@
     <Resource Include="help.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Binds.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="DLL\UserLibrary.dll" />
     <Content Include="DLL\UserLibrary.pdb" />
   </ItemGroup>

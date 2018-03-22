@@ -23,18 +23,19 @@ namespace Manager
     /// </summary>
     public partial class MainWindow : Window
     {
+        DispatcherTimer tmrWatcher;
         public MainWindow()
         {
             InitializeComponent();
             //Application.WdBackGround.Show();
             //Visibility = Visibility.Hidden;
-            DispatcherTimer tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
+            tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             tmrWatcher.Tick += TmrWatcher_Tick;
             App.WdBackGround = new WdBackGround();
             LoadSetting(null, null);
             TbUsbBackupPath.Text = Setting.UsbBackupPath;
         }
-        
+
         private void TmrWatcher_Tick(object sender, EventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -60,8 +61,8 @@ namespace Manager
             App.WdBackGround.Visibility = Setting.WdBackgroundVisibility ? Visibility.Visible : Visibility.Hidden;
             this.Visibility = Setting.WdMainVisibility ? Visibility.Visible : Visibility.Hidden;
         }
-        
-       
+
+        public void WorkBtn_Click(object sender, EventArgs e) { }
 
         private void TbUsbBackupPath_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -77,6 +78,12 @@ namespace Manager
                     TbUsbBackupPath.Background = Brushes.Red;
                 }
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
     }
 }

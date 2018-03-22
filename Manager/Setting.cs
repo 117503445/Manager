@@ -19,9 +19,6 @@ namespace Manager
         private static USettingsProperty<string> UsbBackupPathProperty = uSettings.Register("UsbBackupPath",@"D:/temp/");
         public static string UsbBackupPath { get => UsbBackupPathProperty.Value; set => UsbBackupPathProperty.Value = value; }
     }
-    public static class DirBingdings {
-        public static USettings uSettings = new USettings(AppDomain.CurrentDomain.BaseDirectory, "DirBindings");
-        
-    }
+
 
 }

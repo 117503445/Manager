@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Binds>
+  <Bind SourceStr="D:\temp\source" DestStr="D:\temp\dest" BackupStr="D:\temp\backup" />
+  <Bind SourceStr="D:\temp\source1" DestStr="D:\temp\dest1" BackupStr="D:\temp\backup1" />
+</Binds>

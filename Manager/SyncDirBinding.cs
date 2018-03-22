@@ -24,11 +24,16 @@ namespace Manager
         /// </summary>
         public bool IsWatching
         {
-            get => isWatching; set { isWatching = value; destDirWatcher.EnableRaisingEvents = value; }
+            get => isWatching; set
+            {
+                isWatching = value;
+                sourceDirWatcher.EnableRaisingEvents = value;
+                destDirWatcher.EnableRaisingEvents = value;
+            }
         }
 
+        private FileSystemWatcher sourceDirWatcher;
         private FileSystemWatcher destDirWatcher;
-
         public SyncDirBinding(string sourceStr, string destStr, string backupStr = "")
         {
             if (!Directory.Exists(sourceStr))
@@ -46,37 +51,47 @@ namespace Manager
             this.sourceStr = sourceStr;
             this.destStr = destStr;
             this.backupStr = backupStr;
-
-            destDirWatcher = new FileSystemWatcher()
+            sourceDirWatcher = new FileSystemWatcher()
             {
                 Path = sourceStr,
                 IncludeSubdirectories = true,
                 EnableRaisingEvents = true,
             };
-            WatcherBindingMethod();
+            destDirWatcher = new FileSystemWatcher()
+            {
+                Path = destStr,
+                IncludeSubdirectories = true,
+                EnableRaisingEvents = true,
+            };
+            WatcherBindingMethod(sourceDirWatcher, DestDirWatcher_Changed, DestDirWatcher_Changed);
+            WatcherBindingMethod(destDirWatcher, DestDirWatcher_Changed, DestDirWatcher_Changed);
             DestDirWatcher_Changed(this, null);
         }
 
         private void DestDirWatcher_Changed(object sender, EventArgs e)
         {
 
-            WatcherUnBindingMethod();
+            WatcherUnBindingMethod(sourceDirWatcher, DestDirWatcher_Changed, DestDirWatcher_Changed);
+            WatcherUnBindingMethod(destDirWatcher, DestDirWatcher_Changed, DestDirWatcher_Changed);
             SyncDir.Sync(sourceStr, destStr, backupStr);
-            WatcherBindingMethod();
+            WatcherBindingMethod(sourceDirWatcher, DestDirWatcher_Changed, DestDirWatcher_Changed);
+            WatcherBindingMethod(destDirWatcher, DestDirWatcher_Changed, DestDirWatcher_Changed);
         }
-        private void WatcherBindingMethod()
+
+        private static void WatcherBindingMethod(FileSystemWatcher watcher, FileSystemEventHandler fileSystemEventHandler, RenamedEventHandler renamedEventHandler)
         {
-            destDirWatcher.Changed += DestDirWatcher_Changed;
-            destDirWatcher.Created += DestDirWatcher_Changed;
-            destDirWatcher.Deleted += DestDirWatcher_Changed;
-            destDirWatcher.Renamed += DestDirWatcher_Changed;
+            watcher.Changed += fileSystemEventHandler;
+            watcher.Created += fileSystemEventHandler;
+            watcher.Deleted += fileSystemEventHandler;
+            watcher.Renamed += renamedEventHandler;
         }
-        private void WatcherUnBindingMethod()
+        private static void WatcherUnBindingMethod(FileSystemWatcher watcher, FileSystemEventHandler fileSystemEventHandler, RenamedEventHandler renamedEventHandler)
         {
-            destDirWatcher.Changed -= DestDirWatcher_Changed;
-            destDirWatcher.Created -= DestDirWatcher_Changed;
-            destDirWatcher.Deleted -= DestDirWatcher_Changed;
-            destDirWatcher.Renamed -= DestDirWatcher_Changed;
+            watcher.Changed -= fileSystemEventHandler;
+            watcher.Created -= fileSystemEventHandler;
+            watcher.Deleted -= fileSystemEventHandler;
+            watcher.Renamed -= renamedEventHandler;
         }
     }
+
 }

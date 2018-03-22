@@ -16,15 +16,25 @@ namespace Manager
         public static UsbCopyer copyer;
         public static KeyboardHook hook;
         public static HotKey hotKey;
+        public static List<SyncDirBinding> syncDirBindings=new List<SyncDirBinding>();
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            copyer.Dispose();
-            hook.UnHook();
-            hotKey.UnregisterHotKey();
-            hotKey.Dispose();
+            try
+            {
+                copyer.Dispose();
+                hook.UnHook();
+                hotKey.UnregisterHotKey();
+                hotKey.Dispose();
+            }
+            catch (Exception)
+            {
+
+
+            }
+
         }
         public static WdBackGround WdBackGround;
 
-       
+
     }
 }
