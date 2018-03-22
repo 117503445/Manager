@@ -63,10 +63,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="WdBackGround.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="WdMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +71,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BackGround.cs" />
     <Compile Include="HotKey.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="ProcessWatcher.cs" />
@@ -82,9 +79,6 @@
     <Compile Include="SyncDirBinding.cs" />
     <Compile Include="SyncDirPair.cs" />
     <Compile Include="UsbCopyer.cs" />
-    <Compile Include="WdBackGround.xaml.cs">
-      <DependentUpon>WdBackGround.xaml</DependentUpon>
-    </Compile>
     <Compile Include="WdMain.xaml.cs">
       <DependentUpon>WdMain.xaml</DependentUpon>
       <SubType>Code</SubType>

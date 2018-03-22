@@ -33,7 +33,7 @@ namespace Manager
             }
 
         }
-        public static WdBackGround WdBackGround;
+        //public static WdBackGround WdBackGround;
 
 
     }

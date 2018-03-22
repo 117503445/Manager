@@ -17,3 +17,16 @@
         public const int DBT_DEVICEREMOVECOMPLETE = 0x8004;
 
 		第一位:key;第二位:0_不在大写锁定,1_在大写锁定;第三位:0_按下,1_弹起
+
+		  private void SaveDirBindings()
+        {
+            var i = from x in App.syncDirBindings
+                    select
+new XElement("Bind",
+new XAttribute("SourceStr", x.SourceStr),
+new XAttribute("DestStr", x.DestStr),
+new XAttribute("BackupStr", x.BackupStr));
+            XElement root = new XElement("Binds", i);
+
+            root.Save("Binds.xml");
+        }

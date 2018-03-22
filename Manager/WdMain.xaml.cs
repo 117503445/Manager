@@ -31,7 +31,9 @@ namespace Manager
             //Visibility = Visibility.Hidden;
             tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             tmrWatcher.Tick += TmrWatcher_Tick;
-            App.WdBackGround = new WdBackGround();
+
+            BackGround backGround = new BackGround(this);
+
             LoadSetting(null, null);
             TbUsbBackupPath.Text = Setting.UsbBackupPath;
         }
@@ -58,7 +60,7 @@ namespace Manager
         /// <param name="e"></param>
         private void LoadSetting(object sender, EventArgs e)
         {
-            App.WdBackGround.Visibility = Setting.WdBackgroundVisibility ? Visibility.Visible : Visibility.Hidden;
+            //App.WdBackGround.Visibility = Setting.WdBackgroundVisibility ? Visibility.Visible : Visibility.Hidden;
             this.Visibility = Setting.WdMainVisibility ? Visibility.Visible : Visibility.Hidden;
         }
 
