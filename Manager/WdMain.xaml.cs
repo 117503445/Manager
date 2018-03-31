@@ -21,10 +21,16 @@ namespace Manager
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WdMain : Window
     {
+        private int numExpection = 0;
 
-        public MainWindow()
+        public int NumExpection { get => numExpection; set { numExpection = value;
+                TxtNumExpection.Text = "当前异常数:" + NumExpection.ToString();
+            } 
+        }
+
+        public WdMain()
         {
             InitializeComponent();
             //Application.WdBackGround.Show();

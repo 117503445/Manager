@@ -16,7 +16,8 @@ namespace Manager
         public static UsbCopyer copyer;
         public static KeyboardHook hook;
         public static HotKey hotKey;
-        public static List<SyncDirBinding> syncDirBindings=new List<SyncDirBinding>();
+        public static List<SyncDirBinding> syncDirBindings = new List<SyncDirBinding>();
+        public static WdMain wdMain = new WdMain();
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             try
@@ -29,8 +30,24 @@ namespace Manager
             catch (Exception)
             {
 
-
             }
+
+        }
+
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            ULogger.WriteException(e.Exception);
+#if !DEBUG
+            e.Handled = true;
+#endif
+            wdMain.NumExpection += 1;
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            //Application myAp = new Application();
+            //myAp.Run(wdMain);
+            //new Application().Run(wdMain);
 
         }
         //public static WdBackGround WdBackGround;
