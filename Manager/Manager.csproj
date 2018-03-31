@@ -74,7 +74,6 @@
     <Compile Include="ProcessWatcher.cs" />
     <Compile Include="Setting.cs" />
     <Compile Include="SyncDirBinding.cs" />
-    <Compile Include="SyncDirPair.cs" />
     <Compile Include="UsbCopyer.cs" />
     <Compile Include="WdMain.xaml.cs">
       <DependentUpon>WdMain.xaml</DependentUpon>
