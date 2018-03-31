@@ -23,36 +23,29 @@ namespace Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer tmrWatcher;
+
         public MainWindow()
         {
             InitializeComponent();
             //Application.WdBackGround.Show();
             //Visibility = Visibility.Hidden;
-            tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
-            tmrWatcher.Tick += TmrWatcher_Tick;
 
+            //tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
+            //tmrWatcher.Tick += TmrWatcher_Tick;
+
+            HotKey hotKey_Window = new HotKey(ModifierKeys.Control, Keys.Y, this);
+            hotKey_Window.HotKeyPressed += HotKey_Window_HotKeyPressed;
             BackGround backGround = new BackGround(this);
 
-            LoadSetting(null, null);
+            LoadSetting(this, new EventArgs());
             TbUsbBackupPath.Text = Setting.UsbBackupPath;
         }
 
-        private void TmrWatcher_Tick(object sender, EventArgs e)
+        private void HotKey_Window_HotKeyPressed(HotKey obj)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            string pathShow = path + "/show.txt";
-            string pathStop = path + "/stop.txt";
-            if (File.Exists(pathShow))
-            {
-                Visibility = Visibility.Visible;
-            }
-            if (File.Exists(pathStop))
-            {
-                File.AppendAllText(pathStop, DateTime.Now.ToString());
-                App.Current.Shutdown();
-            }
+            Visibility = (Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
         }
+
         /// <summary>
         /// 读取软件设置
         /// </summary>
@@ -84,8 +77,16 @@ namespace Manager
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
-            Hide();
+
+            var i = System.Windows.MessageBox.Show("Close?", ":<", MessageBoxButton.OKCancel);
+            if (i == MessageBoxResult.OK)
+            {
+                App.Current.Shutdown();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
