@@ -17,7 +17,7 @@ namespace Manager
         public static KeyboardHook hook;
         public static HotKey hotKey;
         public static List<SyncDirBinding> syncDirBindings = new List<SyncDirBinding>();
-        public static WdMain wdMain = new WdMain();
+        public static WdMain wdMain;
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             try
@@ -48,7 +48,13 @@ namespace Manager
             //Application myAp = new Application();
             //myAp.Run(wdMain);
             //new Application().Run(wdMain);
-
+            //wdMain.Show();
+            // App.Current.Run(wdMain);
+        }
+        protected override void OnStartup(StartupEventArgs e) {
+            base.OnStartup(e);
+            wdMain = new WdMain();
+            //Console.WriteLine("OnStart");
         }
         //public static WdBackGround WdBackGround;
 
