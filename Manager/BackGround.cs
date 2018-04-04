@@ -7,7 +7,8 @@ using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using System.Xml.Linq;
-
+using User.Windows;
+using st = Manager.Properties.Settings;
 namespace Manager
 {
     public class BackGround : IDisposable
@@ -16,7 +17,7 @@ namespace Manager
         {
 
 #if !DEBUG
-            App.copyer = new UsbCopyer(Setting.UsbBackupPath, false, false);
+            App.copyer = new UsbCopyer(st.Default.UsbBackupPath, false, false);
 
             App.hook = new KeyboardHook(true);
             App.hook.SetHook();

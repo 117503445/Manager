@@ -69,10 +69,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BackGround.cs" />
-    <Compile Include="HotKey.cs" />
-    <Compile Include="KeyboardHook.cs" />
     <Compile Include="ProcessWatcher.cs" />
-    <Compile Include="Setting.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SyncDirBinding.cs" />
     <Compile Include="UsbCopyer.cs" />
     <Compile Include="WdMain.xaml.cs">

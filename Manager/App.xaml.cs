@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using User.SoftWare;
+using User.Windows;
+
 namespace Manager
 {
     /// <summary>
@@ -17,7 +19,21 @@ namespace Manager
         public static KeyboardHook hook;
         public static HotKey hotKey;
         public static List<SyncDirBinding> syncDirBindings = new List<SyncDirBinding>();
-        public static WdMain wdMain;
+        public static BackGround backGround;
+        private static WdMain wdMain;
+
+        public static WdMain WdMain
+        {
+            get => wdMain; set
+            {
+                if (wdMain != null)
+                {
+                    throw new Exception("已经赋值了");
+                }
+                wdMain = value;
+            }
+        }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
             try
@@ -40,23 +56,8 @@ namespace Manager
 #if !DEBUG
             e.Handled = true;
 #endif
-            wdMain.NumExpection += 1;
+            WdMain.NumExpection += 1;
         }
-
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            //Application myAp = new Application();
-            //myAp.Run(wdMain);
-            //new Application().Run(wdMain);
-            //wdMain.Show();
-            // App.Current.Run(wdMain);
-        }
-        protected override void OnStartup(StartupEventArgs e) {
-            base.OnStartup(e);
-            wdMain = new WdMain();
-            //Console.WriteLine("OnStart");
-        }
-        //public static WdBackGround WdBackGround;
 
 
     }

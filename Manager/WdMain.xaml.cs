@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using User.Windows;
+using st = Manager.Properties.Settings;
 
 namespace Manager
 {
@@ -25,13 +27,18 @@ namespace Manager
     {
         private int numExpection = 0;
 
-        public int NumExpection { get => numExpection; set { numExpection = value;
+        public int NumExpection
+        {
+            get => numExpection; set
+            {
+                numExpection = value;
                 TxtNumExpection.Text = "当前异常数:" + NumExpection.ToString();
-            } 
+            }
         }
 
         public WdMain()
         {
+            App.WdMain = this;
             InitializeComponent();
             //Application.WdBackGround.Show();
             //Visibility = Visibility.Hidden;
@@ -39,31 +46,21 @@ namespace Manager
             //tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
             //tmrWatcher.Tick += TmrWatcher_Tick;
 
+
+
             HotKey hotKey_Window = new HotKey(ModifierKeys.Control, Keys.Y, this);
             hotKey_Window.HotKeyPressed += HotKey_Window_HotKeyPressed;
-            BackGround backGround = new BackGround(this);
+            App.backGround = new BackGround(this);
 
-            LoadSetting(this, new EventArgs());
-            TbUsbBackupPath.Text = Setting.UsbBackupPath;
+            TbUsbBackupPath.Text = st.Default.UsbBackupPath;
         }
 
         private void HotKey_Window_HotKeyPressed(HotKey obj)
         {
             Visibility = (Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
+            Topmost = true;
+            Topmost = false;
         }
-
-        /// <summary>
-        /// 读取软件设置
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LoadSetting(object sender, EventArgs e)
-        {
-            //App.WdBackGround.Visibility = Setting.WdBackgroundVisibility ? Visibility.Visible : Visibility.Hidden;
-            this.Visibility = Setting.WdMainVisibility ? Visibility.Visible : Visibility.Hidden;
-        }
-
-        public void WorkBtn_Click(object sender, EventArgs e) { }
 
         private void TbUsbBackupPath_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -72,7 +69,7 @@ namespace Manager
                 if (Directory.Exists(TbUsbBackupPath.Text))
                 {
                     TbUsbBackupPath.Background = Brushes.White;
-                    Setting.UsbBackupPath = TbUsbBackupPath.Text;
+                    st.Default.UsbBackupPath = TbUsbBackupPath.Text;
                 }
                 else
                 {
@@ -83,7 +80,6 @@ namespace Manager
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
             var i = System.Windows.MessageBox.Show("Close?", ":<", MessageBoxButton.OKCancel);
             if (i == MessageBoxResult.OK)
             {

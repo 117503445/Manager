@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Manager.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="SavePosition" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="UsbBackupPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:/temp/</Value>
     </Setting>
   </Settings>
 </SettingsFile>
