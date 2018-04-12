@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using User.Windows;
 using st = Manager.Properties.Settings;
+using User.SoftWare;
 
 namespace Manager
 {
@@ -26,7 +27,6 @@ namespace Manager
     public partial class WdMain : Window
     {
         private int numExpection = 0;
-
         public int NumExpection
         {
             get => numExpection; set
@@ -40,28 +40,44 @@ namespace Manager
         {
             App.WdMain = this;
             InitializeComponent();
-            //Application.WdBackGround.Show();
-            //Visibility = Visibility.Hidden;
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var i = System.Windows.MessageBox.Show("Close?", ":<", MessageBoxButton.OKCancel);
+            if (i == MessageBoxResult.OK)
+            {
+                App.Current.Shutdown();
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HotKey hotKey_Window = new HotKey(ModifierKeys.Control, Keys.Y, this);
+                hotKey_Window.HotKeyPressed += HotKey_Window_HotKeyPressed;
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                System.Windows.MessageBox.Show("绑定唤醒热键失败,程序将退出:<");
+#endif
+                ULogger.WriteException(ex);
+                App.Current.Shutdown();
+            }
 
-            //tmrWatcher = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1), IsEnabled = true };
-            //tmrWatcher.Tick += TmrWatcher_Tick;
-
-
-
-            HotKey hotKey_Window = new HotKey(ModifierKeys.Control, Keys.Y, this);
-            hotKey_Window.HotKeyPressed += HotKey_Window_HotKeyPressed;
             App.backGround = new BackGround(this);
-
             TbUsbBackupPath.Text = st.Default.UsbBackupPath;
         }
-
         private void HotKey_Window_HotKeyPressed(HotKey obj)
         {
             Visibility = (Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
             Topmost = true;
             Topmost = false;
         }
-
         private void TbUsbBackupPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (IsLoaded)
@@ -78,17 +94,6 @@ namespace Manager
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            var i = System.Windows.MessageBox.Show("Close?", ":<", MessageBoxButton.OKCancel);
-            if (i == MessageBoxResult.OK)
-            {
-                App.Current.Shutdown();
-            }
-            else
-            {
-                e.Cancel = true;
-            }
-        }
+
     }
 }

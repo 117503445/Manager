@@ -11,7 +11,7 @@ using User.Windows;
 using st = Manager.Properties.Settings;
 namespace Manager
 {
-    public class BackGround : IDisposable
+    public class BackGround
     {
         public BackGround(Window window)
         {
@@ -31,10 +31,6 @@ namespace Manager
             LoadDirBinding();
 #endif
             //SyncDirBinding binding = new SyncDirBinding("D:/temp/source","D:/temp/dest");
-        }
-        public void Dispose()
-        {
-            App.Current.Shutdown();
         }
         private void LoadDirBinding()
         {

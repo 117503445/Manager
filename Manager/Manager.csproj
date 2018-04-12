@@ -113,7 +113,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DLL\HTLibrary.dll" />
-    <Content Include="DLL\HTLibrary.pdb" />
     <Content Include="DLL\HTLibrary.XmlSerializers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
