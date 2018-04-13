@@ -15,7 +15,6 @@ namespace Manager
     {
         public BackGround(Window window)
         {
-
 #if !DEBUG
             App.copyer = new UsbCopyer(st.Default.UsbBackupPath, false, false);
 
