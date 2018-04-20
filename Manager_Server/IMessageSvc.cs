@@ -12,16 +12,16 @@ namespace Manager_Server
     public interface IMessageSvc
     {
         [OperationContract]
-        void PushString(string clientName,string s);
+        void PushInfo(string clientName, string s);
 
         [OperationContract]
         string GetServerDebugVersion();
 
         [OperationContract]
-        void WriteFile();
+        void PushUTask(UTask uTask);
 
         [OperationContract]
-        UTask PushUTask();
+        List<UTask> GetUTasks();
     }
 
     // 使用下面示例中说明的数据约定将复合类型添加到服务操作。
@@ -54,5 +54,12 @@ namespace Manager_Server
         private bool isHandled;
 
         private string sender;
+        
+        public UTask(string id, string sender,string extraInfo="")
+        {
+            Id = id;
+            ExtraInfo = extraInfo;
+            Sender = sender;
+        }
     }
 }

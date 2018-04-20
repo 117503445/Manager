@@ -142,11 +142,11 @@ namespace Manager_Server_Admin.Manager_Server {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Manager_Server.IMessageSvc")]
     public interface IMessageSvc {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushString", ReplyAction="http://tempuri.org/IMessageSvc/PushStringResponse")]
-        string PushString(string s);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushInfo", ReplyAction="http://tempuri.org/IMessageSvc/PushInfoResponse")]
+        void PushInfo(string clientName, string s);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushString", ReplyAction="http://tempuri.org/IMessageSvc/PushStringResponse")]
-        System.Threading.Tasks.Task<string> PushStringAsync(string s);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushInfo", ReplyAction="http://tempuri.org/IMessageSvc/PushInfoResponse")]
+        System.Threading.Tasks.Task PushInfoAsync(string clientName, string s);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetServerDebugVersion", ReplyAction="http://tempuri.org/IMessageSvc/GetServerDebugVersionResponse")]
         string GetServerDebugVersion();
@@ -154,17 +154,17 @@ namespace Manager_Server_Admin.Manager_Server {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetServerDebugVersion", ReplyAction="http://tempuri.org/IMessageSvc/GetServerDebugVersionResponse")]
         System.Threading.Tasks.Task<string> GetServerDebugVersionAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/WriteFile", ReplyAction="http://tempuri.org/IMessageSvc/WriteFileResponse")]
-        void WriteFile();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/WriteFile", ReplyAction="http://tempuri.org/IMessageSvc/WriteFileResponse")]
-        System.Threading.Tasks.Task WriteFileAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushUTask", ReplyAction="http://tempuri.org/IMessageSvc/PushUTaskResponse")]
+        void PushUTask(Manager_Server_Admin.Manager_Server.UTask uTask);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushUTask", ReplyAction="http://tempuri.org/IMessageSvc/PushUTaskResponse")]
-        Manager_Server_Admin.Manager_Server.UTask PushUTask();
+        System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Admin.Manager_Server.UTask uTask);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushUTask", ReplyAction="http://tempuri.org/IMessageSvc/PushUTaskResponse")]
-        System.Threading.Tasks.Task<Manager_Server_Admin.Manager_Server.UTask> PushUTaskAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetUTasks", ReplyAction="http://tempuri.org/IMessageSvc/GetUTasksResponse")]
+        Manager_Server_Admin.Manager_Server.UTask[] GetUTasks();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetUTasks", ReplyAction="http://tempuri.org/IMessageSvc/GetUTasksResponse")]
+        System.Threading.Tasks.Task<Manager_Server_Admin.Manager_Server.UTask[]> GetUTasksAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -194,12 +194,12 @@ namespace Manager_Server_Admin.Manager_Server {
                 base(binding, remoteAddress) {
         }
         
-        public string PushString(string s) {
-            return base.Channel.PushString(s);
+        public void PushInfo(string clientName, string s) {
+            base.Channel.PushInfo(clientName, s);
         }
         
-        public System.Threading.Tasks.Task<string> PushStringAsync(string s) {
-            return base.Channel.PushStringAsync(s);
+        public System.Threading.Tasks.Task PushInfoAsync(string clientName, string s) {
+            return base.Channel.PushInfoAsync(clientName, s);
         }
         
         public string GetServerDebugVersion() {
@@ -210,20 +210,20 @@ namespace Manager_Server_Admin.Manager_Server {
             return base.Channel.GetServerDebugVersionAsync();
         }
         
-        public void WriteFile() {
-            base.Channel.WriteFile();
+        public void PushUTask(Manager_Server_Admin.Manager_Server.UTask uTask) {
+            base.Channel.PushUTask(uTask);
         }
         
-        public System.Threading.Tasks.Task WriteFileAsync() {
-            return base.Channel.WriteFileAsync();
+        public System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Admin.Manager_Server.UTask uTask) {
+            return base.Channel.PushUTaskAsync(uTask);
         }
         
-        public Manager_Server_Admin.Manager_Server.UTask PushUTask() {
-            return base.Channel.PushUTask();
+        public Manager_Server_Admin.Manager_Server.UTask[] GetUTasks() {
+            return base.Channel.GetUTasks();
         }
         
-        public System.Threading.Tasks.Task<Manager_Server_Admin.Manager_Server.UTask> PushUTaskAsync() {
-            return base.Channel.PushUTaskAsync();
+        public System.Threading.Tasks.Task<Manager_Server_Admin.Manager_Server.UTask[]> GetUTasksAsync() {
+            return base.Channel.GetUTasksAsync();
         }
     }
 }

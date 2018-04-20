@@ -10,30 +10,28 @@ namespace Manager_Server
 {
     public class MessageSvc : IMessageSvc
     {
+        public static List<UTask> uTasks = new List<UTask>();
+
         public string GetServerDebugVersion()
         {
-            return "0420_1627";
+            return "0421_0704";
         }
 
-        public void PushString(string clientName,string s)
+        public void PushInfo(string clientName, string s)
         {
             string p = AppDomain.CurrentDomain.BaseDirectory + "/Strs";
-            Directory.CreateDirectory(p)
-            if (!Directory.Exists(p))
-            {
-
-            }
+            Directory.CreateDirectory(p);
+            var t = DateTime.Now;
+            File.WriteAllText(p + $"/{t.Minute}_{t.Second}_{clientName}.txt", s);
         }
 
-        public UTask PushUTask()
+        public void PushUTask(UTask uTask)
         {
-            return new UTask();
+            uTasks.Add(uTask);
         }
-
-        public void WriteFile()
+        public List<UTask> GetUTasks()
         {
-            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "1.txt");
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + "1.txt", DateTime.Now.ToString());
+            return uTasks;
         }
     }
 }

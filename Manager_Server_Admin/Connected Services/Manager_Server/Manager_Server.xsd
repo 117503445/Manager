@@ -12,4 +12,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="UTask" nillable="true" type="tns:UTask" />
+  <xs:complexType name="ArrayOfUTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UTask" nillable="true" type="tns:UTask" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUTask" nillable="true" type="tns:ArrayOfUTask" />
 </xs:schema>

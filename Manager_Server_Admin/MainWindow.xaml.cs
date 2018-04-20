@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Manager_Server_Admin.Manager_Server;
 namespace Manager_Server_Admin
 {
     /// <summary>
@@ -23,6 +23,12 @@ namespace Manager_Server_Admin
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BtnPushUTask_Click(object sender, RoutedEventArgs e)
+        {
+            MessageSvcClient client = new MessageSvcClient();
+            client.PushUTask(new UTask{Id=DateTime.Now.ToString(),Sender="admin" });
         }
     }
 }
