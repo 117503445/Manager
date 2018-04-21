@@ -38,6 +38,9 @@ namespace Manager_Server_Test.Manager_Server {
         private string[] MethodParametersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReceiverField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SenderField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -111,6 +114,19 @@ namespace Manager_Server_Test.Manager_Server {
                 if ((object.ReferenceEquals(this.MethodParametersField, value) != true)) {
                     this.MethodParametersField = value;
                     this.RaisePropertyChanged("MethodParameters");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Receiver {
+            get {
+                return this.ReceiverField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReceiverField, value) != true)) {
+                    this.ReceiverField = value;
+                    this.RaisePropertyChanged("Receiver");
                 }
             }
         }

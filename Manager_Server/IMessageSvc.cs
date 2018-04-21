@@ -31,6 +31,7 @@ namespace Manager_Server
     [DataContract]
     public class UTask
     {
+        [XmlSerializerFormat]
         private string id;
         [DataMember]
         public string Id { get => id; set => id = value; }
@@ -44,6 +45,8 @@ namespace Manager_Server
         public string Sender { get => sender; set => sender = value; }
         [DataMember]
         public bool IsHandled { get => isHandled; set => isHandled = value; }
+        [DataMember]
+        public string Receiver { get => receiver; set => receiver = value; }
 
         private string methodName;
 
@@ -54,12 +57,20 @@ namespace Manager_Server
         private bool isHandled;
 
         private string sender;
-        
-        public UTask(string id, string sender,string extraInfo="")
+
+        private string receiver;
+        public UTask(string id, string sender, string re, string extraInfo = "")
         {
             Id = id;
             ExtraInfo = extraInfo;
             Sender = sender;
+        }
+
+        public static void ToXML() { }
+        public static UTask FromXML(string receiver, string xml)
+        {
+            //return new UTask();
+            return null;
         }
     }
 }
