@@ -11,21 +11,24 @@ namespace Manager_Server_Test
     {
         static void Main(string[] args)
         {
-            MessageSvcClient client = new MessageSvcClient();
 
+            MessageSvcClient client = new MessageSvcClient();
             Console.WriteLine(client.GetServerDebugVersion());
-            //client.PushString("test","Hello,World");
-            //Console.ReadLine();
-            
+
+
+            //client.PushUTask(new UTask { Id = client.GetTimeStamp(), Sender = "admin",Receiver="test" });
+
             Timer timer = new Timer() { Interval = 1000, Enabled = true };
             timer.Elapsed += (s, e) =>
             {
-                var i = client.GetUTasks();
+                var i = client.GetUTasks("test");
                 foreach (var item in i)
                 {
-                    Console.WriteLine("TASK:"+item.Id);
+                    Console.WriteLine("TASK:" + item.Id);
                 }
             };
+
+
             Console.ReadLine();
 
         }

@@ -32,6 +32,12 @@
   <wsdl:message name="IMessageSvc_GetUTasks_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUTasksResponse" />
   </wsdl:message>
+  <wsdl:message name="IMessageSvc_GetTimeStamp_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeStamp" />
+  </wsdl:message>
+  <wsdl:message name="IMessageSvc_GetTimeStamp_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeStampResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMessageSvc">
     <wsdl:operation name="PushInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IMessageSvc/PushInfo" message="tns:IMessageSvc_PushInfo_InputMessage" />
@@ -48,6 +54,10 @@
     <wsdl:operation name="GetUTasks">
       <wsdl:input wsaw:Action="http://tempuri.org/IMessageSvc/GetUTasks" message="tns:IMessageSvc_GetUTasks_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMessageSvc/GetUTasksResponse" message="tns:IMessageSvc_GetUTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeStamp">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMessageSvc/GetTimeStamp" message="tns:IMessageSvc_GetTimeStamp_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMessageSvc/GetTimeStampResponse" message="tns:IMessageSvc_GetTimeStamp_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IMessageSvc" type="tns:IMessageSvc">
@@ -81,6 +91,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUTasks">
       <soap:operation soapAction="http://tempuri.org/IMessageSvc/GetUTasks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeStamp">
+      <soap:operation soapAction="http://tempuri.org/IMessageSvc/GetTimeStamp" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

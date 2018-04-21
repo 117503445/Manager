@@ -177,10 +177,16 @@ namespace Manager_Server_Test.Manager_Server {
         System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Test.Manager_Server.UTask uTask);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetUTasks", ReplyAction="http://tempuri.org/IMessageSvc/GetUTasksResponse")]
-        Manager_Server_Test.Manager_Server.UTask[] GetUTasks();
+        Manager_Server_Test.Manager_Server.UTask[] GetUTasks(string receiver);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetUTasks", ReplyAction="http://tempuri.org/IMessageSvc/GetUTasksResponse")]
-        System.Threading.Tasks.Task<Manager_Server_Test.Manager_Server.UTask[]> GetUTasksAsync();
+        System.Threading.Tasks.Task<Manager_Server_Test.Manager_Server.UTask[]> GetUTasksAsync(string receiver);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetTimeStamp", ReplyAction="http://tempuri.org/IMessageSvc/GetTimeStampResponse")]
+        string GetTimeStamp();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetTimeStamp", ReplyAction="http://tempuri.org/IMessageSvc/GetTimeStampResponse")]
+        System.Threading.Tasks.Task<string> GetTimeStampAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -234,12 +240,20 @@ namespace Manager_Server_Test.Manager_Server {
             return base.Channel.PushUTaskAsync(uTask);
         }
         
-        public Manager_Server_Test.Manager_Server.UTask[] GetUTasks() {
-            return base.Channel.GetUTasks();
+        public Manager_Server_Test.Manager_Server.UTask[] GetUTasks(string receiver) {
+            return base.Channel.GetUTasks(receiver);
         }
         
-        public System.Threading.Tasks.Task<Manager_Server_Test.Manager_Server.UTask[]> GetUTasksAsync() {
-            return base.Channel.GetUTasksAsync();
+        public System.Threading.Tasks.Task<Manager_Server_Test.Manager_Server.UTask[]> GetUTasksAsync(string receiver) {
+            return base.Channel.GetUTasksAsync(receiver);
+        }
+        
+        public string GetTimeStamp() {
+            return base.Channel.GetTimeStamp();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetTimeStampAsync() {
+            return base.Channel.GetTimeStampAsync();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Manager_Server_Admin
         private void BtnPushUTask_Click(object sender, RoutedEventArgs e)
         {
             MessageSvcClient client = new MessageSvcClient();
-            client.PushUTask(new UTask{Id=DateTime.Now.ToString(),Sender="admin" });
+            client.PushUTask(new UTask { Id = client.GetTimeStamp(), Sender = "admin", Receiver = "test" });
         }
     }
 }

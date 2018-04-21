@@ -8,6 +8,7 @@
       <xs:element minOccurs="0" name="IsHandled" type="xs:boolean" />
       <xs:element minOccurs="0" name="MethodName" nillable="true" type="xs:string" />
       <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MethodParameters" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Receiver" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Sender" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

@@ -21,7 +21,10 @@ namespace Manager_Server
         void PushUTask(UTask uTask);
 
         [OperationContract]
-        List<UTask> GetUTasks();
+        List<UTask> GetUTasks(string receiver);
+
+        [OperationContract]
+        string GetTimeStamp();
     }
 
     // 使用下面示例中说明的数据约定将复合类型添加到服务操作。
@@ -31,8 +34,7 @@ namespace Manager_Server
     [DataContract]
     public class UTask
     {
-        [XmlSerializerFormat]
-        private string id;
+
         [DataMember]
         public string Id { get => id; set => id = value; }
         [DataMember]
@@ -47,6 +49,8 @@ namespace Manager_Server
         public bool IsHandled { get => isHandled; set => isHandled = value; }
         [DataMember]
         public string Receiver { get => receiver; set => receiver = value; }
+
+        private string id;
 
         private string methodName;
 
@@ -65,7 +69,7 @@ namespace Manager_Server
             ExtraInfo = extraInfo;
             Sender = sender;
         }
-
+        public UTask() { }
         public static void ToXML() { }
         public static UTask FromXML(string receiver, string xml)
         {
