@@ -29,8 +29,6 @@ namespace Manager_Server
 
     // 使用下面示例中说明的数据约定将复合类型添加到服务操作。
     // 可以将 XSD 文件添加到项目中。在生成项目后，可以通过命名空间“WCF.ContractType”直接使用其中定义的数据类型。
-
-
     [DataContract]
     public class UTask
     {

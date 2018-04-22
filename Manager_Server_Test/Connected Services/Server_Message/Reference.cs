@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Manager_Server_Test.Manager_Server {
+namespace Manager_Server_Test.Server_Message {
     using System.Runtime.Serialization;
     using System;
     
@@ -155,7 +155,7 @@ namespace Manager_Server_Test.Manager_Server {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Manager_Server.IMessageSvc")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Server_Message.IMessageSvc")]
     public interface IMessageSvc {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushInfo", ReplyAction="http://tempuri.org/IMessageSvc/PushInfoResponse")]
@@ -171,16 +171,16 @@ namespace Manager_Server_Test.Manager_Server {
         System.Threading.Tasks.Task<string> GetServerDebugVersionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushUTask", ReplyAction="http://tempuri.org/IMessageSvc/PushUTaskResponse")]
-        void PushUTask(Manager_Server_Test.Manager_Server.UTask uTask);
+        void PushUTask(Manager_Server_Test.Server_Message.UTask uTask);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/PushUTask", ReplyAction="http://tempuri.org/IMessageSvc/PushUTaskResponse")]
-        System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Test.Manager_Server.UTask uTask);
+        System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Test.Server_Message.UTask uTask);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetUTasks", ReplyAction="http://tempuri.org/IMessageSvc/GetUTasksResponse")]
-        Manager_Server_Test.Manager_Server.UTask[] GetUTasks(string receiver);
+        Manager_Server_Test.Server_Message.UTask[] GetUTasks(string receiver);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetUTasks", ReplyAction="http://tempuri.org/IMessageSvc/GetUTasksResponse")]
-        System.Threading.Tasks.Task<Manager_Server_Test.Manager_Server.UTask[]> GetUTasksAsync(string receiver);
+        System.Threading.Tasks.Task<Manager_Server_Test.Server_Message.UTask[]> GetUTasksAsync(string receiver);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMessageSvc/GetTimeStamp", ReplyAction="http://tempuri.org/IMessageSvc/GetTimeStampResponse")]
         string GetTimeStamp();
@@ -190,12 +190,12 @@ namespace Manager_Server_Test.Manager_Server {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IMessageSvcChannel : Manager_Server_Test.Manager_Server.IMessageSvc, System.ServiceModel.IClientChannel {
+    public interface IMessageSvcChannel : Manager_Server_Test.Server_Message.IMessageSvc, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class MessageSvcClient : System.ServiceModel.ClientBase<Manager_Server_Test.Manager_Server.IMessageSvc>, Manager_Server_Test.Manager_Server.IMessageSvc {
+    public partial class MessageSvcClient : System.ServiceModel.ClientBase<Manager_Server_Test.Server_Message.IMessageSvc>, Manager_Server_Test.Server_Message.IMessageSvc {
         
         public MessageSvcClient() {
         }
@@ -232,19 +232,19 @@ namespace Manager_Server_Test.Manager_Server {
             return base.Channel.GetServerDebugVersionAsync();
         }
         
-        public void PushUTask(Manager_Server_Test.Manager_Server.UTask uTask) {
+        public void PushUTask(Manager_Server_Test.Server_Message.UTask uTask) {
             base.Channel.PushUTask(uTask);
         }
         
-        public System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Test.Manager_Server.UTask uTask) {
+        public System.Threading.Tasks.Task PushUTaskAsync(Manager_Server_Test.Server_Message.UTask uTask) {
             return base.Channel.PushUTaskAsync(uTask);
         }
         
-        public Manager_Server_Test.Manager_Server.UTask[] GetUTasks(string receiver) {
+        public Manager_Server_Test.Server_Message.UTask[] GetUTasks(string receiver) {
             return base.Channel.GetUTasks(receiver);
         }
         
-        public System.Threading.Tasks.Task<Manager_Server_Test.Manager_Server.UTask[]> GetUTasksAsync(string receiver) {
+        public System.Threading.Tasks.Task<Manager_Server_Test.Server_Message.UTask[]> GetUTasksAsync(string receiver) {
             return base.Channel.GetUTasksAsync(receiver);
         }
         

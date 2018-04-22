@@ -44,7 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\Manager_Server\Reference.cs">
+    <Compile Include="Connected Services\Server_File\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\Server_Message\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -54,20 +59,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\Manager_Server\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\Manager_Server\Manager_Server.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\Manager_Server\Manager_Server_Test.Manager_Server.UTask.datasource">
+    <None Include="Connected Services\Server_File\Manager_Server_Test.Server_File.DownFileResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\Manager_Server\service.wsdl" />
-    <None Include="Connected Services\Manager_Server\service.xsd">
+    <None Include="Connected Services\Server_File\Manager_Server_Test.Server_File.UpFileResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Server_File\Message.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\Manager_Server\service1.xsd">
+    <None Include="Connected Services\Server_File\service.wsdl" />
+    <None Include="Connected Services\Server_File\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server_File\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server_Message\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server_Message\Manager_Server.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server_Message\Manager_Server_Test.Server_Message.UTask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Server_Message\service.wsdl" />
+    <None Include="Connected Services\Server_Message\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Server_Message\service1.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -75,16 +96,29 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\Manager_Server\" />
+    <WCFMetadataStorage Include="Connected Services\Server_File\" />
+    <WCFMetadataStorage Include="Connected Services\Server_Message\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Manager_Server\configuration91.svcinfo" />
+    <None Include="Connected Services\Server_File\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Manager_Server\configuration.svcinfo" />
+    <None Include="Connected Services\Server_File\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\Manager_Server\Reference.svcmap">
+    <None Include="Connected Services\Server_File\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Server_Message\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Server_Message\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Server_Message\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
