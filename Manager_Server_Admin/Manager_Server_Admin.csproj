@@ -113,9 +113,6 @@
     <None Include="Connected Services\Server_File\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\Server_Message\Arrays.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\Server_Message\Manager_Server.xsd">
       <SubType>Designer</SubType>
     </None>

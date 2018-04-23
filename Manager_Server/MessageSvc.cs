@@ -99,7 +99,7 @@ namespace Manager_Server
 
         public string GetServerDebugVersion()
         {
-            return "0421_0704";
+            return "0423_2140";
         }
 
         public void PushInfo(string clientName, string s)
@@ -113,22 +113,22 @@ namespace Manager_Server
         public void PushUTask(UTask uTask)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(UTask));
-            Directory.CreateDirectory($"{rootDir}/UTasks");
-            using (Stream fs = new FileStream($"{rootDir}/UTasks/{uTask.Id}-{uTask.Receiver}.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            Directory.CreateDirectory($"{rootDir}/UTasksCache");
+            using (Stream fs = new FileStream($"{rootDir}/UTasksCache/{uTask.Id}-{uTask.Receiver}.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 serializer.Serialize(fs, uTask);
             }
         }
         public List<UTask> GetUTasks(string receiver)
         {
-            Directory.CreateDirectory($"{rootDir}/UTasks");
-            var uTaskPaths = Directory.GetFiles($"{rootDir}/UTasks");
+            Directory.CreateDirectory($"{rootDir}/UTasksCache");
+            var uTaskPaths = Directory.GetFiles($"{rootDir}/UTasksCache");
             var receivedUTasks = (from x in uTaskPaths where x.Contains(receiver) select x).ToList();
             List<UTask> uTasks = new List<UTask>();
             foreach (var item in receivedUTasks)
             {
                 string xml = File.ReadAllText(item);
-                UTask task= XmlUtil.Deserialize(typeof(UTask), xml) as UTask;
+                UTask task = XmlUtil.Deserialize(typeof(UTask), xml) as UTask;
                 uTasks.Add(task);
                 File.Delete(item);
             }
@@ -138,7 +138,8 @@ namespace Manager_Server
         public string GetTimeStamp()
         {
             var t = DateTime.Now;
-            return $"{t.Year}_{t.Month}_{t.Day}_{t.Hour}_{t.Minute}_{t.Second}";
+            return $"{t.Year}_{t.Month}_{t.Day}_{t.Hour}_{t.Minute}_{t.Second}_{t.Millisecond}";
         }
+
     }
 }

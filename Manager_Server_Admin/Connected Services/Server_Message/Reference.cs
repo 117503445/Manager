@@ -23,10 +23,10 @@ namespace Manager_Server_Admin.Server_Message {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Manager_Server_Admin.Server_Message.Affair AffairField;
+        private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdField;
+        private string InfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsHandledField;
@@ -36,6 +36,9 @@ namespace Manager_Server_Admin.Server_Message {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SenderField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -48,19 +51,6 @@ namespace Manager_Server_Admin.Server_Message {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public Manager_Server_Admin.Server_Message.Affair Affair {
-            get {
-                return this.AffairField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AffairField, value) != true)) {
-                    this.AffairField = value;
-                    this.RaisePropertyChanged("Affair");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Id {
             get {
                 return this.IdField;
@@ -69,6 +59,19 @@ namespace Manager_Server_Admin.Server_Message {
                 if ((object.ReferenceEquals(this.IdField, value) != true)) {
                     this.IdField = value;
                     this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Info {
+            get {
+                return this.InfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InfoField, value) != true)) {
+                    this.InfoField = value;
+                    this.RaisePropertyChanged("Info");
                 }
             }
         }
@@ -112,47 +115,15 @@ namespace Manager_Server_Admin.Server_Message {
             }
         }
         
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Affair", Namespace="http://schemas.datacontract.org/2004/07/Manager_Server")]
-    [System.SerializableAttribute()]
-    public partial class Affair : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string InfoField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Info {
+        public string Type {
             get {
-                return this.InfoField;
+                return this.TypeField;
             }
             set {
-                if ((object.ReferenceEquals(this.InfoField, value) != true)) {
-                    this.InfoField = value;
-                    this.RaisePropertyChanged("Info");
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }

@@ -27,15 +27,11 @@ namespace Manager_Server_Test
                 var i = client.GetUTasks("test");
                 foreach (var item in i)
                 {
-                    Console.WriteLine("TASK:" + item.Id);
+                    HandleTask(item);
                 }
             };
 
             FileSvcClient fileSvcClient = new FileSvcClient();
-            DownLoad(fileSvcClient, "1.iso", "2.iso");
-            // UpLoad(fileSvcClient, "1.apk");
-
-
             Console.ReadLine();
 
         }
@@ -61,6 +57,10 @@ namespace Manager_Server_Test
                 }
             }
             return issuccess;
+        }
+        static void HandleTask(UTask task)
+        {
+
         }
     }
 }
