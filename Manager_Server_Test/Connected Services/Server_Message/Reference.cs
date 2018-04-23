@@ -23,19 +23,13 @@ namespace Manager_Server_Test.Server_Message {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ExtraInfoField;
+        private Manager_Server_Test.Server_Message.Affair AffairField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsHandledField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MethodNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] MethodParametersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReceiverField;
@@ -54,14 +48,14 @@ namespace Manager_Server_Test.Server_Message {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ExtraInfo {
+        public Manager_Server_Test.Server_Message.Affair Affair {
             get {
-                return this.ExtraInfoField;
+                return this.AffairField;
             }
             set {
-                if ((object.ReferenceEquals(this.ExtraInfoField, value) != true)) {
-                    this.ExtraInfoField = value;
-                    this.RaisePropertyChanged("ExtraInfo");
+                if ((object.ReferenceEquals(this.AffairField, value) != true)) {
+                    this.AffairField = value;
+                    this.RaisePropertyChanged("Affair");
                 }
             }
         }
@@ -93,32 +87,6 @@ namespace Manager_Server_Test.Server_Message {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MethodName {
-            get {
-                return this.MethodNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MethodNameField, value) != true)) {
-                    this.MethodNameField = value;
-                    this.RaisePropertyChanged("MethodName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] MethodParameters {
-            get {
-                return this.MethodParametersField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MethodParametersField, value) != true)) {
-                    this.MethodParametersField = value;
-                    this.RaisePropertyChanged("MethodParameters");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Receiver {
             get {
                 return this.ReceiverField;
@@ -140,6 +108,51 @@ namespace Manager_Server_Test.Server_Message {
                 if ((object.ReferenceEquals(this.SenderField, value) != true)) {
                     this.SenderField = value;
                     this.RaisePropertyChanged("Sender");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Affair", Namespace="http://schemas.datacontract.org/2004/07/Manager_Server")]
+    [System.SerializableAttribute()]
+    public partial class Affair : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InfoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Info {
+            get {
+                return this.InfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InfoField, value) != true)) {
+                    this.InfoField = value;
+                    this.RaisePropertyChanged("Info");
                 }
             }
         }

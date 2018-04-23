@@ -32,47 +32,50 @@ namespace Manager_Server
     [DataContract]
     public class UTask
     {
-
         [DataMember]
         public string Id { get => id; set => id = value; }
-        [DataMember]
-        public string MethodName { get => methodName; set => methodName = value; }
-        [DataMember]
-        public string[] MethodParameters { get => methodParameters; set => methodParameters = value; }
-        [DataMember]
-        public string ExtraInfo { get => extraInfo; set => extraInfo = value; }
         [DataMember]
         public string Sender { get => sender; set => sender = value; }
         [DataMember]
         public bool IsHandled { get => isHandled; set => isHandled = value; }
         [DataMember]
         public string Receiver { get => receiver; set => receiver = value; }
+        [DataMember]
+        public Affair Affair { get => affair; set => affair = value; }
 
         private string id;
-
-        private string methodName;
-
-        private string[] methodParameters;
-
-        private string extraInfo;
-
         private bool isHandled;
-
         private string sender;
-
         private string receiver;
-        public UTask(string id, string sender, string re, string extraInfo = "")
+        private Affair affair;
+
+        public UTask(string id, string sender)
         {
             Id = id;
-            ExtraInfo = extraInfo;
             Sender = sender;
         }
         public UTask() { }
-        public static void ToXML() { }
-        public static UTask FromXML(string receiver, string xml)
-        {
-            //return new UTask();
-            return null;
-        }
     }
+    public abstract class Affair
+    {
+        public string Info;
+    }
+    [DataContract]
+    public class ClientMethod : Affair
+    {
+        [DataMember]
+        public string MethodName { get => methodName; set => methodName = value; }
+        [DataMember]
+        public string[] MethodParameters { get => methodParameters; set => methodParameters = value; }
+        private string methodName;
+        private string[] methodParameters;
+    }
+    [DataContract]
+    public class CallCMD : Affair {
+        [DataMember]
+        public string StrCMD { get; set; }
+
+    }
+    [DataContract]
+    public class Info : Affair { }
 }

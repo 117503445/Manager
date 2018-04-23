@@ -32,24 +32,10 @@ namespace Manager_Server_Test
             };
 
             FileSvcClient fileSvcClient = new FileSvcClient();
+            DownLoad(fileSvcClient, "1.iso", "2.iso");
+            // UpLoad(fileSvcClient, "1.apk");
 
-            //UpLoad(fileSvcClient,"1.apk");
-            Stream filestream = new MemoryStream();
-            long filesize = fileSvcClient.DownLoadFile("1.apk", out bool issuccess, out string message, out filestream);
-            byte[] buffer = new byte[filesize];
-            string path = "";
-            string filename = "";
-            FileStream fs = new FileStream(path + filename, FileMode.Create, FileAccess.Write);
-            int count = 0;
-            while ((count = filestream.Read(buffer, 0, buffer.Length)) > 0)
-            {
-                fs.Write(buffer, 0, count);
-            }
 
-            //清空缓冲区
-            fs.Flush();
-            //关闭流
-            fs.Close();
             Console.ReadLine();
 
         }
@@ -60,6 +46,21 @@ namespace Manager_Server_Test
                 bool result = client.UpLoadFile(filePath, fs.Length, fs, out string message);
                 return result;
             }
+        }
+        static bool DownLoad(FileSvcClient client, string serverFilePath, string localPath)
+        {
+            Stream filestream = new MemoryStream();
+            long filesize = client.DownLoadFile(serverFilePath, out bool issuccess, out string message, out filestream);
+            using (FileStream fs = new FileStream(localPath, FileMode.Create, FileAccess.Write))
+            {
+                int count = 0;
+                byte[] buffer = new byte[filesize];
+                while ((count = filestream.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    fs.Write(buffer, 0, count);
+                }
+            }
+            return issuccess;
         }
     }
 }
