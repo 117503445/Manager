@@ -35,10 +35,10 @@ namespace Manager_Server_Test
 
             //UpLoad(fileSvcClient,"1.apk");
             Stream filestream = new MemoryStream();
-            bool issuccess=false;
-            string message = "";
-            long filesize = client.DownLoadFile("1.apk", out issuccess, out message, out filestream);
+            long filesize = fileSvcClient.DownLoadFile("1.apk", out bool issuccess, out string message, out filestream);
             byte[] buffer = new byte[filesize];
+            string path = "";
+            string filename = "";
             FileStream fs = new FileStream(path + filename, FileMode.Create, FileAccess.Write);
             int count = 0;
             while ((count = filestream.Read(buffer, 0, buffer.Length)) > 0)

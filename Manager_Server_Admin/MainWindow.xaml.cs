@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Manager_Server_Admin.Manager_Server;
+using Manager_Server_Admin.Server_Message;
 namespace Manager_Server_Admin
 {
     /// <summary>

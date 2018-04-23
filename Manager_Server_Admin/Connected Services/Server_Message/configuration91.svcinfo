@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="P6leN+JQCYQREGMQQkLln7A2SsI=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="WRiYNRwK1NFU2A0u46Ilh3xMRmw=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IMessageSvc">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IMessageSvc" contract="Manager_Server.IMessageSvc" bindingType="basicHttpBinding" address="http://localhost:8733/Design_Time_Addresses/Manager_Server/Service1/" bindingConfiguration="BasicHttpBinding_IMessageSvc">
+    <endpoint name="BasicHttpBinding_IMessageSvc" contract="Server_Message.IMessageSvc" bindingType="basicHttpBinding" address="http://localhost:8733/Design_Time_Addresses/Manager_Server/Message/" bindingConfiguration="BasicHttpBinding_IMessageSvc">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:8733/Design_Time_Addresses/Manager_Server/Service1/</serializedValue>
+          <serializedValue>http://localhost:8733/Design_Time_Addresses/Manager_Server/Message/</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -127,7 +127,7 @@
           <serializedValue>BasicHttpBinding_IMessageSvc</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>Manager_Server.IMessageSvc</serializedValue>
+          <serializedValue>Server_Message.IMessageSvc</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
