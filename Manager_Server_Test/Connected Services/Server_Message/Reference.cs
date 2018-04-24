@@ -32,6 +32,12 @@ namespace Manager_Server_Test.Server_Message {
         private bool IsHandledField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MethodNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] MethodParametersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReceiverField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -82,6 +88,32 @@ namespace Manager_Server_Test.Server_Message {
                 if ((this.IsHandledField.Equals(value) != true)) {
                     this.IsHandledField = value;
                     this.RaisePropertyChanged("IsHandled");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MethodName {
+            get {
+                return this.MethodNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MethodNameField, value) != true)) {
+                    this.MethodNameField = value;
+                    this.RaisePropertyChanged("MethodName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] MethodParameters {
+            get {
+                return this.MethodParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MethodParametersField, value) != true)) {
+                    this.MethodParametersField = value;
+                    this.RaisePropertyChanged("MethodParameters");
                 }
             }
         }

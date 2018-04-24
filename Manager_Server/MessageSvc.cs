@@ -112,17 +112,27 @@ namespace Manager_Server
 
         public void PushUTask(UTask uTask)
         {
+            string dir = "";
+            if (uTask.IsHandled)
+            {
+                dir = $"{rootDir}/HandledUTasks";
+            }
+            else
+            {
+                dir = $"{rootDir}/UnHandledTasks";
+            }
             XmlSerializer serializer = new XmlSerializer(typeof(UTask));
-            Directory.CreateDirectory($"{rootDir}/UTasksCache");
-            using (Stream fs = new FileStream($"{rootDir}/UTasksCache/{uTask.Id}-{uTask.Receiver}.xml", FileMode.Create, FileAccess.Write, FileShare.None))
+            Directory.CreateDirectory(dir);
+            using (Stream fs = new FileStream($"{dir}/{uTask.Id}-{uTask.Receiver}.xml", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 serializer.Serialize(fs, uTask);
             }
         }
         public List<UTask> GetUTasks(string receiver)
         {
-            Directory.CreateDirectory($"{rootDir}/UTasksCache");
-            var uTaskPaths = Directory.GetFiles($"{rootDir}/UTasksCache");
+            string dir  = $"{rootDir}/UnHandledTasks";
+            Directory.CreateDirectory(dir);
+            var uTaskPaths = Directory.GetFiles(dir);
             var receivedUTasks = (from x in uTaskPaths where x.Contains(receiver) select x).ToList();
             List<UTask> uTasks = new List<UTask>();
             foreach (var item in receivedUTasks)

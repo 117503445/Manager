@@ -32,13 +32,16 @@ namespace Manager_Server_Admin.Server_Message {
         private bool IsHandledField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MethodNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] MethodParametersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ReceiverField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SenderField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -90,6 +93,32 @@ namespace Manager_Server_Admin.Server_Message {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MethodName {
+            get {
+                return this.MethodNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MethodNameField, value) != true)) {
+                    this.MethodNameField = value;
+                    this.RaisePropertyChanged("MethodName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] MethodParameters {
+            get {
+                return this.MethodParametersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MethodParametersField, value) != true)) {
+                    this.MethodParametersField = value;
+                    this.RaisePropertyChanged("MethodParameters");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Receiver {
             get {
                 return this.ReceiverField;
@@ -111,19 +140,6 @@ namespace Manager_Server_Admin.Server_Message {
                 if ((object.ReferenceEquals(this.SenderField, value) != true)) {
                     this.SenderField = value;
                     this.RaisePropertyChanged("Sender");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
                 }
             }
         }

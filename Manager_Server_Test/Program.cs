@@ -12,6 +12,7 @@ namespace Manager_Server_Test
 {
     class Program
     {
+        static string id = "test";
         static void Main(string[] args)
         {
 
@@ -24,10 +25,15 @@ namespace Manager_Server_Test
             Timer timer = new Timer() { Interval = 1000, Enabled = true };
             timer.Elapsed += (s, e) =>
             {
-                var i = client.GetUTasks("test");
-                foreach (var item in i)
+                var tasks = client.GetUTasks(id);
+                foreach (var task in tasks)
                 {
-                    HandleTask(item);
+                    if (!task.IsHandled)
+                    {
+                        UTask handledTask = HandleTask(task);
+                        client.PushUTask(handledTask);
+                        Console.WriteLine($"Handle:{task.Id}");
+                    }
                 }
             };
 
@@ -58,9 +64,28 @@ namespace Manager_Server_Test
             }
             return issuccess;
         }
-        static void HandleTask(UTask task)
+        static UTask HandleTask(UTask task)
         {
-
+            Type type = typeof(MethodCollection);
+            var r = type.GetMethod(task.MethodName).Invoke(null,task.MethodParameters);
+            //task.MethodParameters
+            task.IsHandled = true;
+            task.Info += r.ToString();
+            return task;
+        }
+        class MethodCollection
+        {
+            public static string GetClientMethod()
+            {
+                Type type = typeof(MethodCollection);
+                var m = type.GetMethods();
+                string s = "";
+                foreach (var item in m)
+                {
+                    s += item.Name + ";";
+                }
+                return s;
+            }
         }
     }
 }

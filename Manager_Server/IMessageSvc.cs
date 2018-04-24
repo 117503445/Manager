@@ -44,6 +44,10 @@ namespace Manager_Server
         public string Receiver { get => receiver; set => receiver = value; }
         [DataMember]
         public string Info { get; set; }
+        [DataMember]
+        public string MethodName { get; set; }
+        [DataMember]
+        public string[] MethodParameters { get; set; }
         private string id;
         private bool isHandled;
         private string sender;
