@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="App.Debug.config" />
     <None Include="Connected Services\Server_File\Manager_Server_Test.Server_File.DownFileResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

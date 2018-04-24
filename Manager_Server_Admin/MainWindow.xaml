@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Name="BtnPushUTask" Content="PushUTask" HorizontalAlignment="Left" VerticalAlignment="Top" Width="187" Margin="34,41,0,0" Height="62" Click="BtnPushUTask_Click"/>
+        <Button Name="BtnDebug" Content="Debug" HorizontalAlignment="Left" VerticalAlignment="Top" Width="187" Margin="34,117,0,0" Height="60" Click="BtnDebug_Click"/>
 
     </Grid>
 </Window>

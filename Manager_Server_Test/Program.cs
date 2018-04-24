@@ -37,9 +37,10 @@ namespace Manager_Server_Test
                 }
             };
 
-            FileSvcClient fileSvcClient = new FileSvcClient();
-            Console.ReadLine();
+            //FileSvcClient fileSvcClient = new FileSvcClient();
 
+            Console.ReadLine();
+            
         }
         static bool UpLoad(FileSvcClient client, string filePath)
         {
@@ -67,13 +68,17 @@ namespace Manager_Server_Test
         static UTask HandleTask(UTask task)
         {
             Type type = typeof(MethodCollection);
-            var r = type.GetMethod(task.MethodName).Invoke(null,task.MethodParameters);
+            var r = type.GetMethod(task.MethodName).Invoke(null, task.MethodParameters);
             //task.MethodParameters
             task.IsHandled = true;
             task.Info += r.ToString();
+            if (true)
+            {
+
+            }
             return task;
         }
-        class MethodCollection
+        static class MethodCollection
         {
             public static string GetClientMethod()
             {
@@ -85,6 +90,30 @@ namespace Manager_Server_Test
                     s += item.Name + ";";
                 }
                 return s;
+            }
+            public static async Task<string> CallCMD(string s)
+            {
+                string output = "";
+                await Task.Run(() =>
+                {
+                    System.Diagnostics.Process p = new System.Diagnostics.Process();
+                    p.StartInfo.FileName = "cmd.exe";
+                    p.StartInfo.UseShellExecute = false;    //是否使用操作系统shell启动
+                    p.StartInfo.RedirectStandardInput = true;//接受来自调用程序的输入信息
+                    p.StartInfo.RedirectStandardOutput = true;//由调用程序获取输出信息
+                    p.StartInfo.RedirectStandardError = true;//重定向标准错误输出
+                    p.StartInfo.CreateNoWindow = true;//不显示程序窗口
+                    p.Start();//启动程序
+                              //向cmd窗口发送输入信息
+                    p.StandardInput.WriteLine(s + "&exit");
+                    p.StandardInput.AutoFlush = true;
+                    //获取cmd窗口的输出信息
+                    output = p.StandardOutput.ReadToEnd();
+                    p.WaitForExit();//等待程序执行完退出进程
+                    p.Close();
+
+                });
+                return output;
             }
         }
     }
