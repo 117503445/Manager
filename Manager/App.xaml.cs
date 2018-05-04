@@ -120,6 +120,7 @@ namespace Manager
             {
                 ULogger.WriteInfo("Error", "不可恢复的非UI异常");
             }
+            WdMain.NumExpection += 1;
         }
 
     }
