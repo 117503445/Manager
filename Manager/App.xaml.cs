@@ -21,7 +21,9 @@ namespace Manager
         public static KeyboardHook hook;
         public static HotKey hotKey;
         public static List<SyncDirBinding> syncDirBindings = new List<SyncDirBinding>();
+        public static ProcessWatcher processWatcher = new ProcessWatcher();
         public static BackGround backGround;
+
         private static WdMain wdMain;
 
         public static WdMain WdMain

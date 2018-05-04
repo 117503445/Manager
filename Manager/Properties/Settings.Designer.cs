@@ -34,5 +34,53 @@ namespace Manager.Properties {
                 this["UsbBackupPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsDirBinding {
+            get {
+                return ((bool)(this["IsDirBinding"]));
+            }
+            set {
+                this["IsDirBinding"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsUSBCopyer {
+            get {
+                return ((bool)(this["IsUSBCopyer"]));
+            }
+            set {
+                this["IsUSBCopyer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsHookKeyBoard {
+            get {
+                return ((bool)(this["IsHookKeyBoard"]));
+            }
+            set {
+                this["IsHookKeyBoard"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsWatchingQQ {
+            get {
+                return ((bool)(this["IsWatchingQQ"]));
+            }
+            set {
+                this["IsWatchingQQ"] = value;
+            }
+        }
     }
 }

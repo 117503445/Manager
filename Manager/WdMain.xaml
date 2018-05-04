@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Manager"
+        xmlns:Properties="clr-namespace:Manager.Properties"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" Closing="Window_Closing" Loaded="Window_Loaded" >
     <Grid x:Name="grid">
@@ -23,11 +24,11 @@
         <TextBlock Name="TxtNumExpection" Grid.Row="2" Text="当前无异常" 
                    HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Center" 
                    />
-        <StackPanel Grid.Row="4" VerticalAlignment="Center">
-            <CheckBox  Grid.Row="3" Content="同步文件" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-            <CheckBox Grid.Row="3" Content="U盘监视" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-            <CheckBox Grid.Row="3" Content="键盘监控" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
-            <CheckBox Grid.Row="3" Content="进程监控" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+        <StackPanel Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <CheckBox  Grid.Row="3" Content="同步文件" HorizontalAlignment="Left" VerticalAlignment="Top"  IsChecked="{Binding Path=IsDirBinding,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
+            <CheckBox Grid.Row="3" Content="U盘监视" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Path=IsUSBCopyer,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
+            <CheckBox Grid.Row="3" Content="键盘监控" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Path=IsHookKeyBoard,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
+            <CheckBox Grid.Row="3" Content="进程监控" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Path=IsWatchingQQ,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
         </StackPanel>
 
     </Grid>

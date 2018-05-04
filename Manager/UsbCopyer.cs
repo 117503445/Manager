@@ -41,10 +41,14 @@ namespace Manager
             }
         }
 
-
+        private bool isEnabled = true;
+        public bool IsEnabled { get; set; }
 
         private bool isUseNotifyIcon = false;
         public bool IsUseNotifyIcon { get => isUseNotifyIcon; set { isUseNotifyIcon = value; notifyIcon.Visible = isUseNotifyIcon; } }
+
+
+
         private string dirBackup = "";
         /// <summary>
         /// 
@@ -99,6 +103,10 @@ namespace Manager
         /// <param name="dirDestination">目标文件夹路径</param>
         public void CopyUSB(string dirSource, string dirDestination)
         {
+            if (!IsEnabled)
+            {
+                return;
+            }
             Task.Run(() =>
            {
                string timestamp = TimeStamp();
