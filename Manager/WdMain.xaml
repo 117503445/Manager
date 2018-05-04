@@ -23,5 +23,12 @@
         <TextBlock Name="TxtNumExpection" Grid.Row="2" Text="当前无异常" 
                    HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Center" 
                    />
+        <StackPanel Grid.Row="4" VerticalAlignment="Center">
+            <CheckBox  Grid.Row="3" Content="同步文件" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+            <CheckBox Grid.Row="3" Content="U盘监视" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+            <CheckBox Grid.Row="3" Content="键盘监控" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+            <CheckBox Grid.Row="3" Content="进程监控" HorizontalAlignment="Center" VerticalAlignment="Center"></CheckBox>
+        </StackPanel>
+
     </Grid>
 </Window>

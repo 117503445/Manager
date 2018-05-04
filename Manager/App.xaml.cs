@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using User.SoftWare;
 using User.Windows;
 
@@ -51,15 +52,6 @@ namespace Manager
 
         }
 
-        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
-            ULogger.WriteException(e.Exception);
-#if !DEBUG
-            e.Handled = true;
-#endif
-            WdMain.NumExpection += 1;
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
             // Get Reference to the current Process
@@ -74,5 +66,52 @@ namespace Manager
             }
             base.OnStartup(e);
         }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Current.DispatcherUnhandledException += App_OnDispatcherUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+        }
+        /// <summary>
+        /// UI线程抛出全局异常事件处理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                ULogger.WriteException(e.Exception);
+#if !DEBUG
+                e.Handled = true;
+#endif
+            }
+            catch (Exception)
+            {
+                ULogger.WriteInfo("Error", "不可恢复的UI异常");
+            }
+            WdMain.NumExpection += 1;
+        }
+
+        /// <summary>
+        /// 非UI线程抛出全局异常事件处理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            try
+            {
+                if (e.ExceptionObject is Exception exception)
+                {
+                    ULogger.WriteException(exception);
+                }
+            }
+            catch (Exception)
+            {
+                ULogger.WriteInfo("Error", "不可恢复的非UI异常");
+            }
+        }
+
     }
 }
