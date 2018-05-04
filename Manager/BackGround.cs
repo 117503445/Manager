@@ -15,6 +15,7 @@ namespace Manager
     {
         public BackGround(Window window)
         {
+
             App.copyer = new UsbCopyer(st.Default.UsbBackupPath, false, false);
 
             App.hook = new KeyboardHook(true);
@@ -26,7 +27,9 @@ namespace Manager
             App.processWatcher.AppLaunch += (s, e) => { System.IO.File.AppendAllText("KeyLog.txt", $"APPNAME=QQ,TIME={DateTime.Now}\r\n"); };
 
             LoadDirBinding();
-
+            st.Default.IsUSBCopyer = st.Default.IsUSBCopyer;
+            st.Default.IsHookKeyBoard = st.Default.IsHookKeyBoard;
+            st.Default.IsWatchingQQ = st.Default.IsWatchingQQ;
             //SyncDirBinding binding = new SyncDirBinding("D:/temp/source","D:/temp/dest");
         }
         private void LoadDirBinding()
@@ -37,6 +40,7 @@ namespace Manager
                 List<string> i = (from x in item.Attributes() select x.Value).ToList();
                 App.syncDirBindings.Add(new SyncDirBinding(i[0], i[1], i[2]));
             }
+            st.Default.IsDirBinding = st.Default.IsDirBinding;
         }
     }
 }
