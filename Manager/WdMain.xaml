@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Manager"
         xmlns:Properties="clr-namespace:Manager.Properties"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" Closing="Window_Closing" Loaded="Window_Loaded" >
+        Title="Manager" Height="350" Width="525" Closing="Window_Closing" Loaded="Window_Loaded" >
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>

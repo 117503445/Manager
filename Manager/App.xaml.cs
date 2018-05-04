@@ -81,6 +81,10 @@ namespace Manager
         /// <param name="e"></param>
         private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
+#if DEBUG
+            throw (e.Exception);
+#endif
+
             try
             {
                 ULogger.WriteException(e.Exception);
@@ -106,6 +110,9 @@ namespace Manager
             {
                 if (e.ExceptionObject is Exception exception)
                 {
+#if DEBUG
+                    throw (exception);
+#endif
                     ULogger.WriteException(exception);
                 }
             }
