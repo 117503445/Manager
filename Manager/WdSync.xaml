@@ -22,10 +22,23 @@
         <UniformGrid Grid.Row="3">
 
         </UniformGrid>
-        <UniformGrid Grid.Row="3" Grid.Column="1"></UniformGrid>
-        <UniformGrid Grid.Row="1" Rows="1" >
-            <TextBox Text="源路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
-            <TextBox Text="目标路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <UniformGrid Grid.Row="3" Grid.Column="1" Columns="1">
+            <Button Name="BtnAdd">
+                <Image Source="Res/Pic/Add.png"/>
+            </Button>
+            <Button Name="BtnDelete">
+                <Image Source="Res/Pic/Delete.png"/>
+            </Button>
+            <Button Name="BtnEdit">
+                <Image Source="Res/Pic/Edit.png"/>
+            </Button>
         </UniformGrid>
+        <UniformGrid Grid.Row="1" Rows="1" >
+            <TextBox Name="TbDirSource" Text="源路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" AllowDrop="True" Drop="TbDirSource_Drop"></TextBox>
+            <TextBox Name="TbDirDest" Text="目标路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" AllowDrop="True" Drop="TbDirDest_Drop"></TextBox>
+        </UniformGrid>
+        <Button Name="BtnRunSync" Grid.Row="1" Grid.Column="3">
+            <Image Source="Res/Pic/Go.png"/>
+        </Button>
     </Grid>
 </Window>

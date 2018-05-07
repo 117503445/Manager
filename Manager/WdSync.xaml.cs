@@ -23,5 +23,24 @@ namespace Manager
         {
             InitializeComponent();
         }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var msg = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
+                Console.WriteLine(msg);
+            }
+        }
+
+        private void TbDirDest_Drop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void TbDirSource_Drop(object sender, DragEventArgs e)
+        {
+
+        }
     }
 }

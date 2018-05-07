@@ -162,6 +162,11 @@
     </Content>
     <Content Include="DLL\HTLibrary.dll" />
     <Content Include="DLL\HTLibrary.XmlSerializers.dll" />
+    <Resource Include="Res\Pic\Go.png" />
+    <Resource Include="Res\Pic\Add.png" />
+    <Resource Include="Res\Pic\Delete.png" />
+    <Resource Include="Res\Pic\Edit.png" />
+    <Resource Include="Help\颜色.txt" />
     <Resource Include="Help\manager.ico" />
     <Resource Include="Help\manager.png" />
   </ItemGroup>
