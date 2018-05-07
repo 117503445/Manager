@@ -23,7 +23,7 @@ namespace Manager
         public static List<SyncDirBinding> syncDirBindings = new List<SyncDirBinding>();
         public static ProcessWatcher processWatcher = new ProcessWatcher();
         public static BackGround backGround;
-
+        public static WdSync wdSync;
         private static WdMain wdMain;
 
         public static WdMain WdMain

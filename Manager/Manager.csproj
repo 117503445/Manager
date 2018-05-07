@@ -101,6 +101,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WdSync.xaml.cs">
+      <DependentUpon>WdSync.xaml</DependentUpon>
+    </Compile>
     <Page Include="WdMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,6 +121,10 @@
       <DependentUpon>WdMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WdSync.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -118,6 +118,18 @@ namespace Manager
             }
         }
 
+        private void BtnSync_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                App.wdSync.Show();
+            }
+            catch (Exception)
+            {
+                App.wdSync = new WdSync();
+                App.wdSync.Show();
+            }
 
+        }
     }
 }

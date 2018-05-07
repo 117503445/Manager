@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Manager"
         xmlns:Properties="clr-namespace:Manager.Properties"
         mc:Ignorable="d"
-        Title="Manager" Height="350" Width="525" Closing="Window_Closing" Loaded="Window_Loaded" >
+        Title="Manager" Height="350" Width="525" Closing="Window_Closing" Loaded="Window_Loaded" FontSize="18" >
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -15,21 +15,22 @@
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="1" Text="Usb备份路径" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
-        <TextBox Name="TbUsbBackupPath" Grid.Row="1" Grid.Column="1" FontSize="18" Text="D:/temp/"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="TbUsbBackupPath_TextChanged" />
-        <TextBlock Name="TxtNumExpection" Grid.Row="2" Text="当前无异常" 
-                   HorizontalAlignment="Center" FontSize="18" VerticalAlignment="Center" 
+        <TextBlock Grid.Row="1" Text="Usb备份路径" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+        <TextBox Name="TbUsbBackupPath" Grid.Row="1" Grid.Column="2"  Text="D:/temp/"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" TextChanged="TbUsbBackupPath_TextChanged" />
+        <TextBlock Name="TxtNumExpection" Grid.Row="2" Text="当前无异常:)" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" 
                    />
-        <StackPanel Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1">
             <CheckBox  Grid.Row="3" Content="同步文件" HorizontalAlignment="Left" VerticalAlignment="Top"  IsChecked="{Binding Path=IsDirBinding,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
             <CheckBox Grid.Row="3" Content="U盘监视" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Path=IsUSBCopyer,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
             <CheckBox Grid.Row="3" Content="键盘监控" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Path=IsHookKeyBoard,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
             <CheckBox Grid.Row="3" Content="进程监控" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="{Binding Path=IsWatchingQQ,Source={x:Static Properties:Settings.Default},Mode=TwoWay}"></CheckBox>
         </StackPanel>
-
+        <Button  Name="BtnSync" Grid.Row="2" Grid.Column="2" Content="文件夹同步" HorizontalAlignment="Center" VerticalAlignment="Center" Click="BtnSync_Click" />
     </Grid>
 </Window>
