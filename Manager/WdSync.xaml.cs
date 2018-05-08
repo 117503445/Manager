@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,24 +24,56 @@ namespace Manager
         {
             InitializeComponent();
         }
+        #region TbDrag的拖放事件
+        private void TbDrag_PreviewDragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.Copy;
+            e.Handled = true;
+        }
+        private void TbDrag_PreviewDrop(object sender, DragEventArgs e)
+        {
+            var s = GetMsg(e);
+            if (Directory.Exists(s))
+            {
+                ((TextBox)sender).Text = s;
+            }
+        }
+        #endregion
+        private void BtnRunSync_Click(object sender, RoutedEventArgs e)
+        {
 
-        private void Window_Drop(object sender, DragEventArgs e)
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        /// <summary>
+        /// 获取字符串,出现问题时返回string.Empty
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private static string GetMsg(DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 var msg = ((Array)e.Data.GetData(DataFormats.FileDrop)).GetValue(0).ToString();
-                Console.WriteLine(msg);
+                return msg;
             }
-        }
-
-        private void TbDirDest_Drop(object sender, DragEventArgs e)
-        {
-
-        }
-
-        private void TbDirSource_Drop(object sender, DragEventArgs e)
-        {
-
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }

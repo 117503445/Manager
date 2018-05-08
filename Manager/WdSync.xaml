@@ -23,21 +23,22 @@
 
         </UniformGrid>
         <UniformGrid Grid.Row="3" Grid.Column="1" Columns="1">
-            <Button Name="BtnAdd">
+            <Button Name="BtnAdd" Click="BtnAdd_Click">
                 <Image Source="Res/Pic/Add.png"/>
             </Button>
-            <Button Name="BtnDelete">
+            <Button Name="BtnDelete" Click="BtnDelete_Click">
                 <Image Source="Res/Pic/Delete.png"/>
             </Button>
-            <Button Name="BtnEdit">
+            <Button Name="BtnEdit" Click="BtnEdit_Click">
                 <Image Source="Res/Pic/Edit.png"/>
             </Button>
         </UniformGrid>
         <UniformGrid Grid.Row="1" Rows="1" >
-            <TextBox Name="TbDirSource" Text="源路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" AllowDrop="True" Drop="TbDirSource_Drop"></TextBox>
-            <TextBox Name="TbDirDest" Text="目标路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" AllowDrop="True" Drop="TbDirDest_Drop"></TextBox>
+            <TextBox Name="TbDirSource" Text="源路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" AllowDrop="True" PreviewDrop="TbDrag_PreviewDrop"  
+                  PreviewDragOver="TbDrag_PreviewDragOver" TextWrapping="Wrap"   ></TextBox>
+            <TextBox Name="TbDirDest" Text="目标路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" PreviewDrop="TbDrag_PreviewDrop" PreviewDragOver="TbDrag_PreviewDragOver" TextWrapping="Wrap"></TextBox>
         </UniformGrid>
-        <Button Name="BtnRunSync" Grid.Row="1" Grid.Column="3">
+        <Button Name="BtnRunSync" Grid.Row="1" Grid.Column="3" Click="BtnRunSync_Click">
             <Image Source="Res/Pic/Go.png"/>
         </Button>
     </Grid>
