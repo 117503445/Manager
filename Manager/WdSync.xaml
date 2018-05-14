@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Manager"
         mc:Ignorable="d"
-        Title="WdSync" Height="450" Width="800" FontSize="18">
+        Title="WdSync" Height="450" Width="800" FontSize="18" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
 
@@ -15,10 +15,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <ComboBox Grid.Row="2" Grid.ColumnSpan="2"></ComboBox>
+        <ComboBox Name="CboSyncs" Grid.Row="2" Grid.ColumnSpan="2" SelectionChanged="CboSyncs_SelectionChanged"></ComboBox>
         <UniformGrid Grid.Row="3">
 
         </UniformGrid>
@@ -35,8 +35,8 @@
         </UniformGrid>
         <UniformGrid Grid.Row="1" Rows="1" >
             <TextBox Name="TbDirSource" Text="源路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" AllowDrop="True" PreviewDrop="TbDrag_PreviewDrop"  
-                  PreviewDragOver="TbDrag_PreviewDragOver" TextWrapping="Wrap"   ></TextBox>
-            <TextBox Name="TbDirDest" Text="目标路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" PreviewDrop="TbDrag_PreviewDrop" PreviewDragOver="TbDrag_PreviewDragOver" TextWrapping="Wrap"></TextBox>
+                  PreviewDragOver="TbDrag_PreviewDragOver" TextWrapping="Wrap" TextChanged="TbDrag_TextChanged"  ></TextBox>
+            <TextBox Name="TbDirDest" Text="目标路径" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" PreviewDrop="TbDrag_PreviewDrop" PreviewDragOver="TbDrag_PreviewDragOver" TextWrapping="Wrap" TextChanged="TbDrag_TextChanged"></TextBox>
         </UniformGrid>
         <Button Name="BtnRunSync" Grid.Row="1" Grid.Column="3" Click="BtnRunSync_Click">
             <Image Source="Res/Pic/Go.png"/>

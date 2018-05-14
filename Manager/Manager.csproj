@@ -101,6 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Syncs.cs" />
     <Compile Include="WdSync.xaml.cs">
       <DependentUpon>WdSync.xaml</DependentUpon>
     </Compile>

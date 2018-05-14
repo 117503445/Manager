@@ -44,7 +44,11 @@ namespace Manager
             Height = 0;
             Width = 0;
 #endif
-
+#if DEBUG
+            Hide();
+            App.WdSync = new WdSync();
+            App.WdSync.Show();
+#endif
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -122,12 +126,12 @@ namespace Manager
         {
             try
             {
-                App.wdSync.Show();
+                App.WdSync.Show();
             }
             catch (Exception)
             {
-                App.wdSync = new WdSync();
-                App.wdSync.Show();
+                App.WdSync = new WdSync();
+                App.WdSync.Show();
             }
 
         }

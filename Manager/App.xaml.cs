@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Manager
         public static List<SyncDirBinding> syncDirBindings = new List<SyncDirBinding>();
         public static ProcessWatcher processWatcher = new ProcessWatcher();
         public static BackGround backGround;
-        public static WdSync wdSync;
+        private static WdSync wdSync;
         private static WdMain wdMain;
 
         public static WdMain WdMain
@@ -37,6 +38,12 @@ namespace Manager
                 wdMain = value;
             }
         }
+
+        private static ObservableCollection<Sync> syncs = new ObservableCollection<Sync>();
+
+
+        public static WdSync WdSync { get => wdSync; set => wdSync = value; }
+        public static ObservableCollection<Sync> Syncs { get => syncs; set => syncs = value; }
 
         private void Application_Exit(object sender, ExitEventArgs e)
         {
@@ -73,6 +80,8 @@ namespace Manager
         {
             Current.DispatcherUnhandledException += App_OnDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            //序列化
+            syncs.CollectionChanged += (sd, arg) => { };
         }
         /// <summary>
         /// UI线程抛出全局异常事件处理
