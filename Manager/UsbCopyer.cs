@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using User;
 using System.Windows.Forms;
 using System.IO;
 using s = Manager.Properties.Settings;
-using System.Windows.Interop;
-using System.Windows;
 using System.Windows.Threading;
 using static Manager.UsbCopyer.UsbWatcher;
 
